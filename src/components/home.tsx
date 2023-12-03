@@ -115,7 +115,6 @@ export default () => {
                 width="560"
                 height="315"
                 src="https://www.youtube.com/embed/QatRM3knISY"
-                frameBorder="0"
                 allowFullScreen
               />
             </div>

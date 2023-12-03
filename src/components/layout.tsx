@@ -4,7 +4,6 @@ import { Route, Link, Routes } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 import Home from "./home";
-import Guides from "./guides";
 import TreeDetails from "./trees/tree-details";
 import TreeEditor from "./trees/tree-editor";
 import TreePeople from "./trees/tree-people";
@@ -249,7 +248,6 @@ export const Layout = () => {
         <div className={"styles.body"}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/guides/*" element={<Guides />} />
             <Route path="/trees/create" element={<TreeDetails />} />
             <Route path="/trees/:treeId" element={<TreeEditor />} />
             <Route path="/trees/:treeId/details" element={<TreeDetails />} />

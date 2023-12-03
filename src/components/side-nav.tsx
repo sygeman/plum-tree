@@ -54,11 +54,6 @@ export default ({ onItemClick }: { onItemClick: () => void }) => {
             Home
           </Link>
         </li>
-        <li>
-          <Link to="/guides" onClick={onItemClick}>
-            Guides
-          </Link>
-        </li>
       </ul>
 
       <div className={"styles.navTreesHeader"}>Your Trees</div>
