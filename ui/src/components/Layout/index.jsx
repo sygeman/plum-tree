@@ -7,8 +7,6 @@ import logo from "../../common/images/logo.png";
 import Home from "../Home";
 import Guides from "../Guides";
 import TreeDetails from "../../containers/TreeDetails";
-import TreePublish from "../trees/TreePublish";
-import TreeDownload from "../trees/TreeDownload";
 import TreeEditor from "../trees/TreeEditor";
 import TreePeople from "../trees/TreePeople";
 import PersonEditor from "../trees/PersonEditor";
@@ -62,16 +60,6 @@ export default () => {
             <Route path="/guides/*" element={<Guides />} />
             <Route exact path="/trees/create" element={<TreeDetails />} />
             <Route exact path="/trees/:treeId" element={<TreeEditor />} />
-            <Route
-              exact
-              path="/trees/:treeId/publish"
-              element={<TreePublish />}
-            />
-            <Route
-              exact
-              path="/trees/:treeId/download"
-              element={<TreeDownload />}
-            />
             <Route
               exact
               path="/trees/:treeId/details"

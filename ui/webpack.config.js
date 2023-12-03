@@ -133,10 +133,6 @@ module.exports = {
       template: 'src/index.html',
       hash: true
     }),
-    new HtmlWebpackPlugin({
-      template: 'src/public.html',
-      filename: 'public.html'
-    }),
     new MiniCssExtractPlugin({
       filename: '[fullhash].[name].css',
       chunkFilename: '[fullhash].[id].css'
