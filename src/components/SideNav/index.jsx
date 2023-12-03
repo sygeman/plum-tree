@@ -1,21 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import styles from "./styles.scss";
-import auth from "../../common/js/auth";
 
-export default ({ loadUsersTree, trees, onItemClick }) => {
-  useEffect(() => {
-    const authToken = auth.getToken();
-    axios
-      .get("/api/trees", { headers: { Authorization: `Bearer ${authToken}` } })
-      .then((response) => {
-        loadUsersTree(response.data);
-      })
-      .catch(() => {
-        // nothing to do here - user is just not logged in
-      });
-  }, []);
+export default ({ onItemClick }) => {
+  const trees = [];
 
   return (
     <div>

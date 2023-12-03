@@ -6,12 +6,12 @@ import logo from "../../common/images/logo.png";
 
 import Home from "../Home";
 import Guides from "../Guides";
-import TreeDetails from "../../containers/TreeDetails";
+import TreeDetails from "../trees/TreeDetails";
 import TreeEditor from "../trees/TreeEditor";
 import TreePeople from "../trees/TreePeople";
 import PersonEditor from "../trees/PersonEditor";
 import PersonLinker from "../trees/PersonLinker";
-import SideNav from "../../containers/SideNav";
+import SideNav from "../SideNav";
 
 export default () => {
   const [menuOpen, setMenuOpen] = useState(false);
