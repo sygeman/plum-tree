@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-import { stateToHTML } from "draft-js-export-html";
-import { stateFromHTML } from "draft-js-import-html";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import "draft-js/dist/Draft.css";
-import Loading from "./loading";
+import { stateToHTML } from "draft-js-export-html";
+import { stateFromHTML } from "draft-js-import-html";
+import { useEffect, useRef, useState } from "react";
+
+import { Loading } from "./loading";
 
 const BLOCK_TYPES = [
   { icon: "list-ul", style: "unordered-list-item" },
@@ -17,7 +18,7 @@ const INLINE_STYLES = [
   { icon: "strikethrough", style: "STRIKETHROUGH" },
 ];
 
-export default ({ initialHtml, onUpdate }) => {
+export const RichEditor = ({ initialHtml, onUpdate }) => {
   const [loading, setLoading] = useState(true);
   const [editorState, setEditorState] = useState(null);
 
@@ -102,7 +103,7 @@ export default ({ initialHtml, onUpdate }) => {
   );
 };
 
-const StyleButton = ({ onToggle, style, active, icon }) => {
+const StyleButton = ({ active, icon, onToggle, style }) => {
   function handleToggle(e) {
     e.preventDefault();
     onToggle(style);
@@ -133,18 +134,18 @@ const StylesToolbar = (props) => {
     <div className="input-group">
       {INLINE_STYLES.map((type) => (
         <StyleButton
-          key={type.icon}
-          icon={type.icon}
           active={currentStyle.has(type.style)}
+          icon={type.icon}
+          key={type.icon}
           onToggle={handleInlineToggle}
           style={type.style}
         />
       ))}
       {BLOCK_TYPES.map((type) => (
         <StyleButton
-          key={type.icon}
-          icon={type.icon}
           active={type.style === blockType}
+          icon={type.icon}
+          key={type.icon}
           onToggle={handleBlockToggle}
           style={type.style}
         />

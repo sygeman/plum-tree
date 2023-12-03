@@ -1,4 +1,4 @@
-export default [
+export const aspirationOptions = [
   "Academic",
   "Admired Icon",
   "Angling Ace",

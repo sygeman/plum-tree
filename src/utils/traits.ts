@@ -1,4 +1,4 @@
-export default [
+export const traitOptions = [
   "A Gift of Credits",
   "A True Master",
   "Active",
