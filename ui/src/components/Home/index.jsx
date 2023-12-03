@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styles from "./styles.scss";
 import plumbob from "./plumbob.png";
 import thumbsup from "./thumbsup.png";
-import lifering from "./lifering.png";
 
 export default () => {
   return (

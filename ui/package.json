@@ -9,16 +9,8 @@
   "browser": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
-    "test": "nyc mocha --recursive test",
-    "lint": "standard",
-    "lint:fix": "standard --fix",
-    "clean": "rm -rf dist/",
     "prebuild": "npm run clean",
-    "build": "NODE_ENV=production webpack",
-    "predownload": "npm run clean",
-    "download": "NODE_ENV=production webpack --config webpack-download.config.js",
-    "predeploy": "npm run build",
-    "deploy": "aws s3 sync --delete dist/ s3://com.theplumtreeapp.$STACK-assets "
+    "build": "NODE_ENV=production webpack"
   },
   "standard": {
     "ignore": [
