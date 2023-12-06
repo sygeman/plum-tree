@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import defaultAvatar from "../../assets/default-avatar.png";
-import Loading from "../../components/loading";
+import { Loading } from "../../components/loading";
 
 // .loading {
 //   text-align: center;

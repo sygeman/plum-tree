@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import Loading from "../../components/loading";
+import { Loading } from "../../components/loading";
 
 // .linkTile {
 //   border: 1px solid $grey-lightest;

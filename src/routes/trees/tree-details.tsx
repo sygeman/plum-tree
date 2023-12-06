@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 
 import { ImageManager } from "../../components/image-manager";
 import { Loading } from "../../components/loading";
-import { RichEditor } from "../../components/rich-editor";
 
 export const TreeDetails = () => {
   const navigate = useNavigate();
@@ -143,7 +142,7 @@ export const TreeDetails = () => {
             value={title}
           />
         </div>
-        <RichEditor initialHtml={description} onUpdate={setDescription} />
+        {/* <RichEditor initialHtml={description} onUpdate={setDescription} /> */}
         <Link to={cancelLink}>Cancel</Link>
         <button id="tree-details-submit" type="submit">
           {treeId ? "Update Tree Details" : "Create Tree"}

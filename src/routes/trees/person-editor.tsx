@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import defaultAvatar from "../../assets/default-avatar.png";
 import { ImageManager } from "../../components/image-manager";
 import { Loading } from "../../components/loading";
-import { RichEditor } from "../../components/rich-editor";
 import { aspirationOptions } from "../../utils/aspirations";
 import { lifeStateOptions } from "../../utils/life-states";
 import { traitOptions } from "../../utils/traits";
@@ -264,7 +263,7 @@ export const PersonEditor = () => {
           />
         </div>
 
-        <RichEditor initialHtml={bio} onUpdate={setBio} />
+        {/* <RichEditor initialHtml={bio} onUpdate={setBio} /> */}
 
         <div className="form-group">
           <label>Traits</label>
