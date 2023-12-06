@@ -28,3 +28,11 @@ Edit Node
 - Delete Node
 
 Add Node
+
+## New image flow
+
+- take from local
+- crop
+- covert to webp
+- covert to base64
+- save to treefile.json

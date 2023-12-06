@@ -6,7 +6,6 @@ import Select from "react-select/creatable";
 import { toast } from "react-toastify";
 
 import defaultAvatar from "../../assets/default-avatar.png";
-import { ImageManager } from "../../components/image-manager";
 import { Loading } from "../../components/loading";
 import { aspirationOptions } from "../../utils/aspirations";
 import { lifeStateOptions } from "../../utils/life-states";
@@ -230,13 +229,13 @@ export const PersonEditor = () => {
   return (
     <div className="container">
       <h1>{personId ? "Edit Person" : "Create Person"}</h1>
-      <ImageManager
+      {/* <ImageManager
         aspect={1}
         dir="avatar"
         image={avatar}
         imagePreview={imagePreview}
         onImageChange={updateAvatar}
-      />
+      /> */}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">

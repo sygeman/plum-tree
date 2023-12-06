@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { ImageManager } from "../../components/image-manager";
 import { Loading } from "../../components/loading";
 
 export const TreeDetails = () => {
@@ -123,12 +122,12 @@ export const TreeDetails = () => {
     <div className="container">
       <h1>{treeId ? "Update Tree Details" : "Create a New Tree"}</h1>
 
-      <ImageManager
+      {/* <ImageManager
         dir="cover"
         image={cover}
         imagePreview={imagePreview}
         onImageChange={updateCover}
-      />
+      /> */}
 
       <form onSubmit={handleSubmit}>
         <div className="form-group">
