@@ -193,7 +193,7 @@ export const TreeToolbar = ({
               type="checkbox"
             />
             <label
-              className={[styles.toolbarItem, "checkbox"].join(" ")}
+              className={["styles.toolbarItem", "checkbox"].join(" ")}
               onClick={handleTogglePreview}
             >
               <span /> Preview

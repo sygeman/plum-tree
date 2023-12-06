@@ -11,7 +11,7 @@ import {
 import { Partner } from "./partner";
 import { Person } from "./person";
 
-export default ({
+export const Node = ({
   addNode,
   editNode,
   highlightParents,
@@ -86,10 +86,11 @@ export default ({
     <g className="node" transform={`translate(${nodeX},${nodeY})`}>
       {!readonly && (
         <rect
-          className={"styles.background"}
+          className="fill-none stroke-white stroke-2"
           height={NODE_HEIGHT}
           rx={NODE_HEIGHT / 2}
           ry={NODE_HEIGHT / 2}
+          style={{ strokeDasharray: 5 }}
           width={nodeWidth}
         />
       )}

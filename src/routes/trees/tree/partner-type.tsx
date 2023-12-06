@@ -17,9 +17,8 @@ export const PartnerType = ({ type }) => {
     return (
       <g
         className={
-          type === "EX_PARTNER"
-            ? `${"styles.plus"} ex-partner-symbol`
-            : `${"styles.plus"} partner-symbol`
+          "fill-none stroke-black stroke-2"
+          // type === "EX_PARTNER" ? `ex-partner-symbol` : `partner-symbol`
         }
         transform={transform}
       >
@@ -42,7 +41,7 @@ export const PartnerType = ({ type }) => {
   if (type === "ABDUCTION") {
     return (
       <g
-        className={`${"styles.abduction"} abduction-symbol`}
+        className="fill-black stroke-none abduction-symbol"
         transform="translate(-5,35)"
       >
         <circle
@@ -64,7 +63,7 @@ export const PartnerType = ({ type }) => {
   if (type === "MARRIED") {
     return (
       <polyline
-        className={`${"styles.marriage"} marriage-symbol`}
+        className="fill-none stroke-black stroke-2 marriage-symbol"
         points="0,10 0,3 3,6 6,3 6,10"
         transform="translate(-2,35)"
       />

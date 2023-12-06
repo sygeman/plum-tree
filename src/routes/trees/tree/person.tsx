@@ -47,8 +47,8 @@ export const Person = (props) => {
         height={avatarRadius * 2}
         preserveAspectRatio="xMidYMid slice"
         width={avatarRadius * 2}
-        // xlinkHref={(personData.avatar)}
         x="0"
+        xlinkHref={personData.avatar}
         xmlnsXlink="http://www.w3.org/1999/xlink"
         y="0"
       />
@@ -85,7 +85,7 @@ export const Person = (props) => {
         </defs>
       )}
       <circle
-        className={"styles.avatar"}
+        className="stroke-white stroke-2 cursor-pointer"
         cx={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}
         cy={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}
         fill={`url(#${fillId})`}

@@ -5,7 +5,7 @@ import {
   TREE_DEPTH,
 } from "./constants";
 
-export default ({ linkData }) => {
+export const Link = ({ linkData }) => {
   function drawPath() {
     let path = "M ";
     const startX = linkData.parent.x;
@@ -41,11 +41,11 @@ export default ({ linkData }) => {
       path += " H " + (linkData.x - 40);
     }
 
-    // // move down to final depth
+    // move down to final depth
     path += " V " + (TREE_DEPTH * linkData.depth + 10);
 
     return path;
   }
 
-  return <path className={"styles.link"} d={drawPath()} />;
+  return <path className=" fill-none stroke-[#333] stroke-2" d={drawPath()} />;
 };

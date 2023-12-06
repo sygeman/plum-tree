@@ -179,6 +179,8 @@ export const TreeEditor = () => {
     setTree(tree);
   }
 
+  console.log(tree);
+
   return (
     <div>
       <h1 className="sr-only">Tree Editor</h1>
@@ -189,11 +191,11 @@ export const TreeEditor = () => {
         readonly={readonly}
         tree={tree}
       />
-      <TreeToolbar
+      {/* <TreeToolbar
         saveTree={saveTree}
         setPreviewMode={setReadonly}
         tree={tree}
-      />
+      /> */}
       {nodeToEdit && (
         <NodeEditor
           close={() => setNodeToEdit(null)}

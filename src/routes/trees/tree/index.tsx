@@ -6,9 +6,10 @@ import { useEffect, useRef, useState } from "react";
 
 import { CommonPatterns } from "./common-patterns";
 import { TREE_DEPTH, TREE_TOP_PADDING } from "./constants";
-import Link from "./link";
-import Node from "./node";
+import { Link } from "./link";
+import { Node } from "./node";
 import { PersonDetails } from "./person-details";
+import { TreeDetails } from "./tree-details";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -189,7 +190,10 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
   const treeDescription = get(tree, "description", "");
 
   return (
-    <div className={"styles.root"}>
+    <div
+      className="absolute inset-0 overflow-hidden bg-cover"
+      style={{ backgroundImage: `url("/green-poly.jpg"` }}
+    >
       <div
         className={"styles.showTreeDetails"}
         onClick={handleShowTreeDetails}
@@ -219,7 +223,7 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
         />
       )}
 
-      {/* {treeDetails && (
+      {treeDetails && (
         <TreeDetails
           closeDetails={closeTreeDetails}
           description={treeDescription}
@@ -227,7 +231,7 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
           style={onChange ? { top: 65 } : { top: 0 }}
           title={treeTitle}
         />
-      )} */}
+      )}
 
       <svg height="100%" ref={svg} width="100%">
         <CommonPatterns />
