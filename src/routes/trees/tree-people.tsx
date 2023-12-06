@@ -2,7 +2,6 @@ import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import defaultAvatar from "../../assets/default-avatar.png";
 
@@ -84,17 +83,7 @@ export const TreePeople = () => {
           setFilter("");
           setFilteredPeople(people);
         })
-      )
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred"
-          ),
-          { autoClose: false }
-        );
-      });
+      );
   }, []);
 
   function handleFilterPeople(event) {
@@ -134,19 +123,8 @@ export const TreePeople = () => {
             setFilteredPeople(
               filteredPeople.filter((person) => person._id !== personId)
             );
-            toast.success("Person removed");
           })
-        )
-        .catch((error) => {
-          toast.error(
-            get(
-              error,
-              "response.data.errors[0].detail",
-              "Failed to delete person from tree"
-            ),
-            { autoClose: false }
-          );
-        });
+        );
     }
   }
 

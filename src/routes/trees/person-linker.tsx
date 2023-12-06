@@ -2,7 +2,6 @@ import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 
 // .linkTile {
 //   border: 1px solid $grey-lightest;
@@ -46,23 +45,10 @@ export const PersonLinker = () => {
   const [links, setLinks] = useState<any[]>([]);
 
   useEffect(() => {
-    axios
-      .get(`/api/people/${personId}`)
-      .then((response) => {
-        const links = get(response, "data.links", []);
-
-        setLinks(links);
-      })
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred"
-          ),
-          { autoClose: false }
-        );
-      });
+    axios.get(`/api/people/${personId}`).then((response) => {
+      const links = get(response, "data.links", []);
+      setLinks(links);
+    });
   }, []);
 
   function handleSubmit(event: any) {
@@ -74,22 +60,9 @@ export const PersonLinker = () => {
       treeId: tree,
     });
 
-    axios
-      .put(`/api/people/${personId}`, { links })
-      .then((response) => {
-        toast.success("Person links updated");
-        setLinks(response.data.links);
-      })
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred updating persons links"
-          ),
-          { autoClose: false }
-        );
-      });
+    axios.put(`/api/people/${personId}`, { links }).then((response) => {
+      setLinks(response.data.links);
+    });
   }
 
   function deleteLink(linkData: any) {
@@ -100,18 +73,7 @@ export const PersonLinker = () => {
     axios
       .put(`/api/people/${personId}`, { links: newLinks })
       .then((response) => {
-        toast.success("Person links updated");
         setLinks(response.data.links);
-      })
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred updating persons links"
-          ),
-          { autoClose: false }
-        );
       });
   }
 

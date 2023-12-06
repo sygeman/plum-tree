@@ -2,7 +2,6 @@ import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export const TreeDetails = () => {
   const navigate = useNavigate();
@@ -15,25 +14,13 @@ export const TreeDetails = () => {
 
   useEffect(() => {
     if (treeId) {
-      axios
-        .get(`/api/trees/${treeId}`)
-        .then((response) => {
-          const { cover, description, title } = response.data;
-          setTitle(title);
-          setDescription(description);
-          setCover(cover);
-          // setCoverUri(getUploadedImageUri(cover, "600x320"));
-        })
-        .catch((error) => {
-          toast.error(
-            get(
-              error,
-              "response.data.errors[0].detail",
-              "Failed to get tree info"
-            ),
-            { autoClose: false }
-          );
-        });
+      axios.get(`/api/trees/${treeId}`).then((response) => {
+        const { cover, description, title } = response.data;
+        setTitle(title);
+        setDescription(description);
+        setCover(cover);
+        // setCoverUri(getUploadedImageUri(cover, "600x320"));
+      });
     }
   }, []);
 
@@ -55,47 +42,22 @@ export const TreeDetails = () => {
   }
 
   function _createTree(tree) {
-    axios
-      .post("/api/trees", tree)
-      .then((response) => {
-        const tree = get(response, "data");
-        const treeId = get(response, "data._id");
-        toast.success("Tree created");
-        navigate(`/trees/${treeId}`);
-        // update the side nav
-        // addTree(tree)
-      })
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred creating tree"
-          ),
-          { autoClose: false }
-        );
-      });
+    axios.post("/api/trees", tree).then((response) => {
+      const tree = get(response, "data");
+      const treeId = get(response, "data._id");
+
+      navigate(`/trees/${treeId}`);
+      // update the side nav
+      // addTree(tree)
+    });
   }
 
   function _updateTree(treeId, tree) {
-    axios
-      .patch(`/api/trees/${treeId}`, tree)
-      .then(() => {
-        toast.success("Tree details updated");
-        navigate(`/trees/${treeId}`);
-        // update the side nav
-        // updateTree(Object.assign(tree, { _id: treeId }))
-      })
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred updating tree details"
-          ),
-          { autoClose: false }
-        );
-      });
+    axios.patch(`/api/trees/${treeId}`, tree).then(() => {
+      navigate(`/trees/${treeId}`);
+      // update the side nav
+      // updateTree(Object.assign(tree, { _id: treeId }))
+    });
   }
 
   const cancelLink = treeId ? `/trees/${treeId}` : "/";

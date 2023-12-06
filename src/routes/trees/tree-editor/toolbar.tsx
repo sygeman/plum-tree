@@ -2,12 +2,11 @@ import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 // import styles from "./styles.scss";
 
 import ToolbarDropdown from "./toolbar-dropdown";
 
-export default ({
+const TreeToolbar = ({
   saveTree: onSaveTree,
   setPreviewMode: onPreviewModeChange,
   tree,
@@ -58,13 +57,9 @@ export default ({
           headers: { Authorization: `Bearer ${authToken}` },
         })
         .then(() => {
-          toast.success("Tree deleted");
           // quickest way to go to homepage and reload trees for side nav is to
           // simply reload the page and going to homepage.
           window.location.href = "/";
-        })
-        .catch((error) => {
-          toast.error("Failed to delete your tree", { autoClose: false });
         });
     }
   }
@@ -215,3 +210,5 @@ export default ({
     </div>
   );
 };
+
+export default TreeToolbar;

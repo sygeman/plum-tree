@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import NodeEdit from "../node-editor";
 import Tree from "../tree";
@@ -180,7 +179,6 @@ export const TreeEditor = () => {
 
   function saveTree(tree) {
     setTree(tree);
-    toast.success("Tree saved");
   }
 
   return (

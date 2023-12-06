@@ -1,9 +1,7 @@
 import axios from "axios";
-import get from "lodash.get";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Select from "react-select/creatable";
-import { toast } from "react-toastify";
 
 import defaultAvatar from "../../assets/default-avatar.png";
 import { aspirationOptions } from "../../utils/aspirations";
@@ -76,32 +74,27 @@ export const PersonEditor = () => {
 
   useEffect(() => {
     if (personId) {
-      axios
-        .get(`/api/people/${personId}`)
-        .then((response) => {
-          const {
-            aspirations,
-            avatar,
-            bio,
-            custom,
-            firstName,
-            lastName,
-            lifeStates,
-            traits,
-          } = response.data;
-          setAvatar(avatar);
-          // setAvatarUri(getUploadedImageUri(avatar, "200x200"));
-          setFirstName(firstName);
-          setLastName(lastName);
-          setBio(bio);
-          setTraits(traits);
-          setAspirations(aspirations);
-          setLifeStates(lifeStates);
-          setCustom(custom);
-        })
-        .catch((error) => {
-          toast.error("Failed to get person info", { autoClose: false });
-        });
+      axios.get(`/api/people/${personId}`).then((response) => {
+        const {
+          aspirations,
+          avatar,
+          bio,
+          custom,
+          firstName,
+          lastName,
+          lifeStates,
+          traits,
+        } = response.data;
+        setAvatar(avatar);
+        // setAvatarUri(getUploadedImageUri(avatar, "200x200"));
+        setFirstName(firstName);
+        setLastName(lastName);
+        setBio(bio);
+        setTraits(traits);
+        setAspirations(aspirations);
+        setLifeStates(lifeStates);
+        setCustom(custom);
+      });
     }
   }, []);
 
@@ -136,41 +129,15 @@ export const PersonEditor = () => {
   }
 
   function _createPerson(person) {
-    axios
-      .post("/api/people", person)
-      .then(() => {
-        toast.success("Person created");
-        navigate(`/trees/${treeId}/people`);
-      })
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred creating person"
-          ),
-          { autoClose: false }
-        );
-      });
+    axios.post("/api/people", person).then(() => {
+      navigate(`/trees/${treeId}/people`);
+    });
   }
 
   function _updatePerson(person) {
-    axios
-      .put(`/api/people/${personId}`, person)
-      .then(() => {
-        toast.success("Person updated");
-        navigate(-1);
-      })
-      .catch((error) => {
-        toast.error(
-          get(
-            error,
-            "response.data.errors[0].detail",
-            "Unknown error occurred updating person"
-          ),
-          { autoClose: false }
-        );
-      });
+    axios.put(`/api/people/${personId}`, person).then(() => {
+      navigate(-1);
+    });
   }
 
   function handleAddCustomRow(event) {
