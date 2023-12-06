@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { NodeEditor } from "../node-editor";
 import { Tree } from "../tree";
-import { TreeToolbar } from "./toolbar";
+// import { TreeToolbar } from "./toolbar";
 
 // .toolbar, .toolbarMobile {
 //   position: relative;
@@ -179,7 +179,7 @@ export const TreeEditor = () => {
     setTree(tree);
   }
 
-  console.log(tree);
+  console.log(nodeToEdit);
 
   return (
     <div>

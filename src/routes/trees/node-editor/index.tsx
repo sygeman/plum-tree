@@ -4,6 +4,21 @@ import { Parents } from "./parents";
 import { Partners } from "./partners";
 import { Person } from "./person";
 
+const NodeEditorBlock = ({ action, actionTitle, description, title }) => {
+  return (
+    <div className="py-2">
+      <h2 className="text-xl font-semibold">{title}</h2>
+      <p>{description}</p>
+      <button
+        className="bg-green-700 text-white px-4 rounded py-1 my-2"
+        onClick={action}
+      >
+        {actionTitle}
+      </button>
+    </div>
+  );
+};
+
 export const NodeEditor = ({ close, node, onChange, people = [], tree }) => {
   const [currentView, setCurrentView] = useState(null);
   const [editingNode, setEditingNode] = useState(node);
@@ -71,19 +86,18 @@ export const NodeEditor = ({ close, node, onChange, people = [], tree }) => {
   }
 
   return (
-    <div className={"styles.editNodeContainer"}>
-      <div className="container">
-        <div
-          className={"styles.closeButton"}
+    <div className="absolute inset-0 bg-white flex flex-col items-center">
+      <div className="w-[600px] p-4">
+        <button
+          className="absolute right-0 px-4"
           id="close-node-editor"
           onClick={close}
         >
           <span>Close</span>
-          <i className={"styles.close"} />
-        </div>
+        </button>
 
-        <h1>Edit Node</h1>
-        <p>
+        <h1 className="text-2xl font-semibold">Edit Node</h1>
+        <p className="text-gray-500">
           Edit a point in a tree by adding a person to a node and their
           partners.
         </p>
@@ -116,65 +130,38 @@ export const NodeEditor = ({ close, node, onChange, people = [], tree }) => {
         )}
 
         {currentView === null && (
-          <div>
-            <div className={"'styles.editNodeSection'"}>
-              <h2>Set Node Person</h2>
-              <p>
-                A node person is the Sim you'll see on the left at each point in
+          <div className="space-y-2 mt-4 divide-y">
+            <NodeEditorBlock
+              action={() => setCurrentView("person")}
+              actionTitle="Set This Nodes Person"
+              description="A node person is the Sim you'll see on the left at each point in
                 the tree with their parents above, partners to the right and
-                children below.
-              </p>
-              <button
-                className="btn btn-primary"
-                id="set-node-person"
-                onClick={() => setCurrentView("person")}
-              >
-                Set This Nodes Person <i className="icon-chevron-right" />
-              </button>
-            </div>
+                children below."
+              title="Set Node Person"
+            />
 
-            <div className={"styles.editNodeSection"}>
-              <h2>Set Node Partners</h2>
-              <p>A Sim can have multiple partners current or past.</p>
-              <button
-                className="btn btn-primary"
-                id="set-node-partners"
-                onClick={() => setCurrentView("partners")}
-              >
-                Set This Nodes Partners <i className="icon-chevron-right" />
-              </button>
-            </div>
+            <NodeEditorBlock
+              action={() => setCurrentView("partners")}
+              actionTitle="Set Node Partners"
+              description="A Sim can have multiple partners current or past."
+              title="Set This Nodes Partners"
+            />
 
-            <div className={"styles.editNodeSection"}>
-              <h2>Set Node Parents</h2>
-              <p>
-                Add extra information on how your Sim came to be and who raised
-                them.
-              </p>
-              <button
-                className="btn btn-primary"
-                id="set-node-parents"
-                onClick={() => setCurrentView("parents")}
-              >
-                Set This Nodes Parent Details{" "}
-                <i className="icon-chevron-right" />
-              </button>
-            </div>
+            <NodeEditorBlock
+              action={() => setCurrentView("parents")}
+              actionTitle="Set Node Parents"
+              description="Add extra information on how your Sim came to be and who raised
+              them."
+              title="Set This Nodes Parent Details"
+            />
 
-            <div className={"styles.editNodeSection"}>
-              <h2>Danger Zone</h2>
-              <p>
-                Delete this node? Remember if you delete this node you will also
-                delete any children attached to it too.
-              </p>
-              <button
-                className="btn btn-danger"
-                id="delete-node"
-                onClick={deleteNode}
-              >
-                Delete This Node
-              </button>
-            </div>
+            <NodeEditorBlock
+              action={() => deleteNode()}
+              actionTitle="Delete This Node"
+              description="elete this node? Remember if you delete this node you will also
+              delete any children attached to it too."
+              title="Danger Zone"
+            />
           </div>
         )}
       </div>
