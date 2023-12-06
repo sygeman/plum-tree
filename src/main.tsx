@@ -7,7 +7,6 @@ import "./main.css";
 import { IndexPage } from "./routes/index";
 import { PersonEditor } from "./routes/trees/person-editor";
 import { PersonLinker } from "./routes/trees/person-linker";
-import { TreeDetails } from "./routes/trees/tree-details";
 import { TreeEditor } from "./routes/trees/tree-editor";
 import { TreePeople } from "./routes/trees/tree-people";
 
@@ -18,9 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Layout>
           <Routes>
             <Route element={<IndexPage />} path="/" />
-            <Route element={<TreeDetails />} path="/trees/create" />
-            <Route element={<TreeEditor />} path="/trees/:treeId" />
-            <Route element={<TreeDetails />} path="/trees/:treeId/details" />
+            {/* <Route element={<TreeEditor />} path="/trees/:treeId" />
             <Route element={<TreePeople />} path="/trees/:treeId/people" />
             <Route
               element={<PersonEditor />}
@@ -33,7 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route
               element={<PersonLinker />}
               path="/trees/:treeId/people/:personId/link"
-            />
+            /> */}
           </Routes>
         </Layout>
       </div>

@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-// import styles from './styles.scss'
 
-export default ({ id, items, label }) => {
+export const TreeToolbarDropdown = ({ id, items, label }) => {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
 

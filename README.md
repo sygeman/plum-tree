@@ -36,3 +36,8 @@ Add Node
 - covert to webp
 - covert to base64
 - save to treefile.json
+
+## New create tree flow
+
+- generate new tree (uuid, Untitled tree)
+- move to /trees/:id

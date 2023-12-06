@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import ToolbarDropdown from "./toolbar-dropdown";
 
-const TreeToolbar = ({
+export const TreeToolbar = ({
   saveTree: onSaveTree,
   setPreviewMode: onPreviewModeChange,
   tree,
@@ -210,5 +210,3 @@ const TreeToolbar = ({
     </div>
   );
 };
-
-export default TreeToolbar;

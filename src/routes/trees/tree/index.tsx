@@ -10,7 +10,6 @@ import Link from "./link";
 import Node from "./node";
 import PersonDetails from "./person-details";
 import styles from "./styles.scss";
-import TreeDetails from "./tree-details";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -20,7 +19,7 @@ function usePrevious(value) {
   return ref.current;
 }
 
-export default ({ onChange, onEditNode, people = [], readonly, tree }) => {
+export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
   const [zoomInitialized, setZoomInitialized] = useState(false);
   const [links, setLinks] = useState([]);
   const [nodes, setNodes] = useState([]);
@@ -221,7 +220,7 @@ export default ({ onChange, onEditNode, people = [], readonly, tree }) => {
         />
       )}
 
-      {treeDetails && (
+      {/* {treeDetails && (
         <TreeDetails
           closeDetails={closeTreeDetails}
           description={treeDescription}
@@ -229,7 +228,7 @@ export default ({ onChange, onEditNode, people = [], readonly, tree }) => {
           style={onChange ? { top: 65 } : { top: 0 }}
           title={treeTitle}
         />
-      )}
+      )} */}
 
       <svg height="100%" ref={svg} width="100%">
         <CommonPatterns />

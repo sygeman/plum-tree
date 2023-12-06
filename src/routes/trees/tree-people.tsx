@@ -168,7 +168,7 @@ export const TreePeople = () => {
         Here you can create people to place in the structure of your family tree
         or edit existing people already in the tree.
       </p>
-      <div className={styles.navButtons}>
+      <div className={"styles.navButtons"}>
         <Link
           className="btn btn-default"
           id="back-to-tree"
@@ -219,12 +219,12 @@ export const TreePeople = () => {
 
         return (
           <div
-            className={`${styles.personTile} people-list-item`}
+            className={`${"styles.personTile"} people-list-item`}
             key={person._id}
           >
-            <div className={styles.avatar} style={inlineAvatarStyle} />
+            <div className={"styles.avatar"} style={inlineAvatarStyle} />
             <div>{name}</div>
-            <div className={styles.personMenu}>
+            <div className={"styles.personMenu"}>
               <Link
                 className="btn btn-small btn-default edit-person"
                 to={personEditLink}

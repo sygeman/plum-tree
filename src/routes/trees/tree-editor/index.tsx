@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import NodeEdit from "../node-editor";
 import Tree from "../tree";
 // import styles from "./styles.scss";
-import Toolbar from "./toolbar";
+import { TreeToolbar } from "./toolbar";
 
 // .toolbar, .toolbarMobile {
 //   position: relative;
@@ -167,13 +167,13 @@ import Toolbar from "./toolbar";
 //   color: $grey-medium;
 // }
 
-import data from "../../../../data/data-641f24449a150cba09f92d5b.json";
+import { getTree } from "@/api/tree";
 
 export const TreeEditor = () => {
   const params = useParams();
-  const { treeId } = params;
-  const [tree, setTree] = useState(data);
-  const [people, setPeople] = useState(data.people);
+
+  const [tree, setTree] = useState(getTree(""));
+  const [people, setPeople] = useState(getTree("").people);
   const [readonly, setReadonly] = useState(false);
   const [nodeToEdit, setNodeToEdit] = useState(null);
 
@@ -191,7 +191,11 @@ export const TreeEditor = () => {
         readonly={readonly}
         tree={tree}
       />
-      <Toolbar saveTree={saveTree} setPreviewMode={setReadonly} tree={tree} />
+      <TreeToolbar
+        saveTree={saveTree}
+        setPreviewMode={setReadonly}
+        tree={tree}
+      />
       {nodeToEdit && (
         <NodeEdit
           close={() => setNodeToEdit(null)}
