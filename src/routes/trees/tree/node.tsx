@@ -122,7 +122,7 @@ export const Node = ({
 
       {!readonly && (
         <circle
-          className={`$'{styles.addChildIcon'} add-node`}
+          className="cursor-pointer add-node"
           cx={partners.length ? NODE_HEIGHT : NODE_HEIGHT / 2}
           cy={NODE_HEIGHT}
           fill={`url(#${PLUS_BUTTON_PATTERN})`}
@@ -133,7 +133,7 @@ export const Node = ({
 
       {!readonly && (
         <circle
-          className={`${"styles.editNodeIcon"} edit-node`}
+          className="cursor-pointer edit-node"
           cy={NODE_HEIGHT / 2}
           fill={`url(#${EDIT_BUTTON_PATTERN})`}
           onClick={() => editNode(nodeData)}

@@ -48,7 +48,7 @@ export const Person = (props) => {
         preserveAspectRatio="xMidYMid slice"
         width={avatarRadius * 2}
         x="0"
-        xlinkHref={personData.avatar}
+        // xlinkHref={personData.avatar}
         xmlnsXlink="http://www.w3.org/1999/xlink"
         y="0"
       />

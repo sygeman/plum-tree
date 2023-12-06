@@ -47,5 +47,5 @@ export const Link = ({ linkData }) => {
     return path;
   }
 
-  return <path className=" fill-none stroke-[#333] stroke-2" d={drawPath()} />;
+  return <path className="fill-none stroke-[#333] stroke-2" d={drawPath()} />;
 };

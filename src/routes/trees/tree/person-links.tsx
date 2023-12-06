@@ -37,7 +37,7 @@ export const PersonLinks = ({ links, small }) => {
   return (
     <g className="person-link">
       <circle
-        className={`${"styles.linksIcon"} person-links`}
+        className="cursor-pointer person-links"
         cx={centered + offset}
         cy={centered - offset}
         fill={`url(#${LINK_BUTTON_PATTERN})`}
@@ -48,7 +48,7 @@ export const PersonLinks = ({ links, small }) => {
       {linksOpen && (
         <g transform={`translate(${listX},${listY})`}>
           <rect
-            className={"styles.linkList"}
+            className="fill-[#f4f7f6] stroke-[#e6eaea] stroke-1"
             height={linkListHeight}
             rx="3"
             ry="3"
@@ -59,16 +59,13 @@ export const PersonLinks = ({ links, small }) => {
             const { personId, treeId } = linkData;
             return (
               <g
-                className={`${"styles.linkListItem"} person-link`}
+                className="fill-[#f4f7f6] cursor-pointer hover:fill-white person-link"
                 key={index}
                 onClick={() => goToTree(treeId, personId)}
                 transform={`translate(0,${48 * index})`}
               >
                 <rect height="48" rx="3" ry="3" width="198" />
-                <text
-                  className={"styles.linkListText"}
-                  transform="translate(10,30)"
-                >
+                <text className="cursor-pointer" transform="translate(10,30)">
                   {linkData.title}
                 </text>
               </g>

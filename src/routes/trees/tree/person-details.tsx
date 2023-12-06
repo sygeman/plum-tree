@@ -40,7 +40,35 @@ export const PersonDetails = ({
   // }
 
   return (
-    <div className={"styles.personDetails"} style={style}>
+    //     .editButton,
+    // .closeButton {
+    //   position: absolute;
+    //   text-decoration: none;
+    //   color: $font-color;
+    //   top: 15px;
+    //   background: #f4f7f6;
+    //   padding: 5px 15px;
+    //   cursor: pointer;
+    //   line-height: 30px;
+    //   border-radius: 5px;
+    //   transition: background 0.3s ease-in-out;
+
+    //   &:hover {
+    //     background: #eee;
+
+    //     .close {
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
+
+    // .closeButton {
+    //   right: 15px;
+    // }
+    <div
+      className="absolute z-100 bottom-0 right-0 w-[300px] m-4 p-4 bg-[#f4f7f6] overflow-auto"
+      style={style}
+    >
       {!readonly && (
         <Link
           className={"styles.editButton"}
@@ -56,8 +84,19 @@ export const PersonDetails = ({
       >
         <span>Close</span>
       </div>
-      <div className={"styles.personDetailsTop"}>
+      <div className="text-center">
         <div
+          // .personDetailsAvatar {
+          //   width: 70px;
+          //   height: 70px;
+          //   border-radius: 50%;
+          //   border: $color-white solid 4px;
+          //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
+          //   display: block;
+          //   margin: 0px auto;
+          //   background-position: center center;
+          //   background-size: cover;
+          // }
           className={"styles.personDetailsAvatar"}
           style={inlineAvatarStyle}
         />
@@ -80,8 +119,25 @@ export const PersonDetails = ({
                 ? `url(${parent.avatar})`
                 : `url(${defaultAvatar})`;
               return (
+                // .parentRow {
+                //   display: flex;
+                //   margin-bottom: 10px;
+                //   justify-content: flex-start;
+                //   align-items: center;
+                // }
                 <div className={"styles.parentRow"} key={index}>
                   <div
+                    // .parentAvatar {
+                    //   width: 40px;
+                    //   height: 40px;
+                    //   border-radius: 50%;
+                    //   border: $color-white solid 4px;
+                    //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
+                    //   display: block;
+                    //   margin-right: 10px;
+                    //   background-position: center center;
+                    //   background-size: cover;
+                    // }
                     className={"styles.parentAvatar"}
                     style={{ backgroundImage }}
                   />
@@ -104,8 +160,25 @@ export const PersonDetails = ({
                 ? `url(${parent.avatar})`
                 : `url(${defaultAvatar})`;
               return (
+                // .parentRow {
+                //   display: flex;
+                //   margin-bottom: 10px;
+                //   justify-content: flex-start;
+                //   align-items: center;
+                // }
                 <div className={"styles.parentRow"} key={index}>
                   <div
+                    // .parentAvatar {
+                    //   width: 40px;
+                    //   height: 40px;
+                    //   border-radius: 50%;
+                    //   border: $color-white solid 4px;
+                    //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
+                    //   display: block;
+                    //   margin-right: 10px;
+                    //   background-position: center center;
+                    //   background-size: cover;
+                    // }
                     className={"styles.parentAvatar"}
                     style={{ backgroundImage }}
                   />
@@ -125,6 +198,17 @@ export const PersonDetails = ({
           <div>
             {traits.map((trait, index) => {
               return (
+                // .tag {
+                //   background: $blue1;
+                //   color: $color-white;
+                //   padding: 3px 10px;
+                //   margin-right: 7px;
+                //   margin-bottom: 10px;
+                //   border-radius: $default-border-radius;
+                //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
+                //   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                //   display: inline-block;
+                // }
                 <span className={"styles.tag"} key={index}>
                   {trait}
                 </span>
@@ -140,6 +224,17 @@ export const PersonDetails = ({
           <div>
             {aspirations.map((aspiration, index) => {
               return (
+                // .tag {
+                //   background: $blue1;
+                //   color: $color-white;
+                //   padding: 3px 10px;
+                //   margin-right: 7px;
+                //   margin-bottom: 10px;
+                //   border-radius: $default-border-radius;
+                //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
+                //   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+                //   display: inline-block;
+                // }
                 <span className={"styles.tag"} key={index}>
                   {aspiration}
                 </span>
@@ -155,6 +250,17 @@ export const PersonDetails = ({
 
           {lifeStates.map((lifeState, index) => {
             return (
+              // .tag {
+              //   background: $blue1;
+              //   color: $color-white;
+              //   padding: 3px 10px;
+              //   margin-right: 7px;
+              //   margin-bottom: 10px;
+              //   border-radius: $default-border-radius;
+              //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
+              //   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+              //   display: inline-block;
+              // }
               <span className={"styles.tag"} key={index}>
                 {lifeState}
               </span>
@@ -183,12 +289,22 @@ export const PersonDetails = ({
       )}
 
       <div
+        // .linkDetailsToggle {
+        //   font-size: smaller;
+        //   color: $blue1;
+        //   text-decoration: underline;
+        //   cursor: pointer;
+        //   display: inline;
+        // }
         className={"styles.linkDetailsToggle"}
         onClick={handleToggleLinkData}
       >
         {linkDataVisible ? "Hide Link Details" : "Show Link Details"}
       </div>
       {linkDataVisible && (
+        // .linkDetails {
+        //   font-size: smaller;
+        // }
         <div className={"styles.linkDetails"}>
           <div>
             Tree Id <code>{treeId}</code>
