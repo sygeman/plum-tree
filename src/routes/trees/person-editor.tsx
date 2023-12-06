@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Select from "react-select/creatable";
 
-import defaultAvatar from "../../assets/default-avatar.png";
 import { aspirationOptions } from "../../utils/aspirations";
 import { lifeStateOptions } from "../../utils/life-states";
 import { traitOptions } from "../../utils/traits";
+
+import defaultAvatar from "/default-avatar.png";
 
 // .personAvatarContainer {
 //   text-align: center;

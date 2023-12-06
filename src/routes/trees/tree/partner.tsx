@@ -1,10 +1,9 @@
 import get from "lodash.get";
-import React from "react";
 
-import PartnerType from "./PartnerType";
-import Person from "./Person";
+import { PartnerType } from "./partner-type";
+import { Person } from "./person";
 
-export default ({
+export const Partner = ({
   highlightPeople,
   partnerData,
   partners,

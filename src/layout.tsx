@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "./assets/logo.png";
+import logo from "/logo.png";
 
 export const Layout = ({ children }: PropsWithChildren) => {
   return (

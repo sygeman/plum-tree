@@ -3,7 +3,7 @@ import get from "lodash.get";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import defaultAvatar from "../../assets/default-avatar.png";
+import defaultAvatar from "/default-avatar.png";
 
 // .loading {
 //   text-align: center;
@@ -201,10 +201,7 @@ export const TreePeople = () => {
 
         let backgroundImage;
         if (person.avatar) {
-          backgroundImage = `url(${getUploadedImageUri(
-            person.avatar,
-            "200x200"
-          )})`;
+          backgroundImage = `url(${person.avatar})`;
         } else {
           backgroundImage = `url(${defaultAvatar})`;
         }

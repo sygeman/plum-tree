@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   NODE_HEIGHT,
   NODE_SMALL_AVATAR_RADIUS,

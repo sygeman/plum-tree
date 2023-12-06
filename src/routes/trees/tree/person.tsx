@@ -8,9 +8,9 @@ import {
   NODE_HEIGHT,
   NODE_SMALL_AVATAR_RADIUS,
 } from "./constants";
-import PersonLinks from "./person-links";
+import { PersonLinks } from "./person-links";
 
-const Person = (props) => {
+export const Person = (props) => {
   const {
     highlightParents,
     mute,
@@ -47,7 +47,7 @@ const Person = (props) => {
         height={avatarRadius * 2}
         preserveAspectRatio="xMidYMid slice"
         width={avatarRadius * 2}
-        // xlinkHref={getUploadedImageUri(personData.avatar, "200x200")}
+        // xlinkHref={(personData.avatar)}
         x="0"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         y="0"
@@ -106,5 +106,3 @@ const Person = (props) => {
     </g>
   );
 };
-
-export default Person;

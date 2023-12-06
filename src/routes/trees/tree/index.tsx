@@ -4,11 +4,11 @@ import { zoom as d3Zoom } from "d3-zoom";
 import get from "lodash.get";
 import { useEffect, useRef, useState } from "react";
 
-import CommonPatterns from "./common-patterns";
+import { CommonPatterns } from "./common-patterns";
 import { TREE_DEPTH, TREE_TOP_PADDING } from "./constants";
 import Link from "./link";
 import Node from "./node";
-import PersonDetails from "./person-details";
+import { PersonDetails } from "./person-details";
 
 function usePrevious(value) {
   const ref = useRef();

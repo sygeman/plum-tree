@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import defaultAvatar from "../../../assets/default-avatar.png";
-import RawHTML from "./raw-html";
-// import { getUploadedImageUri } from "../../../common/js/utils";
+import { RawHTML } from "./raw-html";
 
-export default ({
+import defaultAvatar from "/default-avatar.png";
+
+export const PersonDetails = ({
   adoptiveParents = [],
   aspirations = [],
   avatar,
@@ -31,9 +31,9 @@ export default ({
 
   const inlineAvatarStyle = {};
   // if (avatar) {
-  //   inlineAvatarStyle.backgroundImage = `url(${getUploadedImageUri(
-  //     avatar,
-  //     "200x200"
+  //   inlineAvatarStyle.backgroundImage = `url(${(
+  //     avatar
+  //
   //   )})`;
   // } else {
   //   inlineAvatarStyle.backgroundImage = `url(${defaultAvatar})`;
@@ -77,7 +77,7 @@ export default ({
           <div>
             {parents.map((parent, index) => {
               const backgroundImage = parent.avatar
-                ? `url(${getUploadedImageUri(parent.avatar, "200x200")})`
+                ? `url(${parent.avatar})`
                 : `url(${defaultAvatar})`;
               return (
                 <div className={"styles.parentRow"} key={index}>
@@ -101,7 +101,7 @@ export default ({
           <div>
             {adoptiveParents.map((parent, index) => {
               const backgroundImage = parent.avatar
-                ? `url(${getUploadedImageUri(parent.avatar, "200x200")})`
+                ? `url(${parent.avatar})`
                 : `url(${defaultAvatar})`;
               return (
                 <div className={"styles.parentRow"} key={index}>

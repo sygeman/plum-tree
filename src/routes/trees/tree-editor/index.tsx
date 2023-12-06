@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import NodeEdit from "../node-editor";
+import { NodeEditor } from "../node-editor";
 import { Tree } from "../tree";
 import { TreeToolbar } from "./toolbar";
 
@@ -195,7 +195,7 @@ export const TreeEditor = () => {
         tree={tree}
       />
       {nodeToEdit && (
-        <NodeEdit
+        <NodeEditor
           close={() => setNodeToEdit(null)}
           node={nodeToEdit}
           onChange={saveTree}

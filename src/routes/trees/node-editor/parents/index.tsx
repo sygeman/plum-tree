@@ -1,9 +1,9 @@
 import get from "lodash.get";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import PeopleSelect from "../PeopleSelect";
+import { PeopleSelect } from "../people-select";
 
-export default ({ close, node, onSave, people }) => {
+export const Parents = ({ close, node, onSave, people }) => {
   const [conception, setConception] = useState(
     get(node, "data.parentType", "NONE")
   );

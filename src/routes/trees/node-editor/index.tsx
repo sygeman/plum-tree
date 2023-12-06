@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import Parents from "./parents";
-import Partners from "./partners";
-import Person from "./person";
+import { Parents } from "./parents";
+import { Partners } from "./partners";
+import { Person } from "./person";
 
 export const NodeEditor = ({ close, node, onChange, people = [], tree }) => {
   const [currentView, setCurrentView] = useState(null);

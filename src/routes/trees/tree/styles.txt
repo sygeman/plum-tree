@@ -7,7 +7,7 @@
   top: 0px;
   right: 0px;
   bottom: 0px;
-  background-image: url("../../../common/images/green-poly.jpg");
+  background-image: url("/green-poly.jpg");
   background-size: cover;
   overflow: hidden;
 }

@@ -1,9 +1,3 @@
-import React from "react";
-
-import defaultAvatar from "../../../common/images/default-avatar.png";
-import editIcon from "../../../common/images/edit.png";
-import linkIcon from "../../../common/images/link.png";
-import plusIcon from "../../../common/images/plus.png";
 import {
   DEFAULT_AVATAR_PATTERN,
   DEFAULT_SMALL_AVATAR_PATTERN,
@@ -15,7 +9,12 @@ import {
   PLUS_BUTTON_PATTERN,
 } from "./constants";
 
-export default () => {
+import defaultAvatar from "/default-avatar.png";
+import editIcon from "/edit.png";
+import linkIcon from "/link.png";
+import plusIcon from "/plus.png";
+
+export const CommonPatterns = () => {
   return (
     <defs>
       <pattern height="1" id={LINK_BUTTON_PATTERN} width="1" x="10" y="10">

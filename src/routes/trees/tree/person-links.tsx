@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -9,7 +9,7 @@ import {
   NODE_SMALL_AVATAR_RADIUS,
 } from "./constants";
 
-export default ({ links, small }) => {
+export const PersonLinks = ({ links, small }) => {
   const [linksOpen, setLinksOpen] = useState(false);
   const navigate = useNavigate();
 

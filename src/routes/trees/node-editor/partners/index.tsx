@@ -1,9 +1,9 @@
 import get from "lodash.get";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import PartnerRow from "./PartnerRow";
+import { PartnerRow } from "./partner-row";
 
-export default ({ close, node, onSave, people }) => {
+export const Partners = ({ close, node, onSave, people }) => {
   const [partners, setPartners] = useState(get(node, "data.partners", []));
 
   function handleAddPartner() {

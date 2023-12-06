@@ -1,7 +1,7 @@
 import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { ToolbarDropdown } from "./toolbar-dropdown";
 
@@ -10,7 +10,6 @@ export const TreeToolbar = ({
   setPreviewMode: onPreviewModeChange,
   tree,
 }) => {
-  const navigate = useNavigate();
   const [previewMode, setPreviewMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -51,15 +50,11 @@ export const TreeToolbar = ({
     );
 
     if (deleteConfirmed) {
-      axios
-        .delete(`/api/trees/${get(tree, "_id")}`, {
-          headers: { Authorization: `Bearer ${authToken}` },
-        })
-        .then(() => {
-          // quickest way to go to homepage and reload trees for side nav is to
-          // simply reload the page and going to homepage.
-          window.location.href = "/";
-        });
+      axios.delete(`/api/trees/${get(tree, "_id")}`).then(() => {
+        // quickest way to go to homepage and reload trees for side nav is to
+        // simply reload the page and going to homepage.
+        window.location.href = "/";
+      });
     }
   }
 

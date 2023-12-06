@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   NODE_PLUS_HEIGHT,
   NODE_PLUS_WIDTH,
@@ -10,7 +8,7 @@ import {
   PARTNER_ABDUCTION_TOP_Y,
 } from "./constants";
 
-export default ({ type }) => {
+export const PartnerType = ({ type }) => {
   if (type === "PARTNER" || type === "EX_PARTNER") {
     let transform = "translate(-5,35)";
     if (type === "EX_PARTNER") {

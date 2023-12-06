@@ -1,4 +1,4 @@
-import RawHTML from "./raw-html";
+import { RawHTML } from "./raw-html";
 
 // .treeDetails {
 //   position: absolute;
@@ -58,10 +58,16 @@ import RawHTML from "./raw-html";
 //   right: 15px;
 // }
 
-export default ({ closeDetails, description, image, style, title }) => {
+export const TreeDetails = ({
+  closeDetails,
+  description,
+  image,
+  style,
+  title,
+}) => {
   const inlineAvatarStyle = {};
   // if (image) {
-  //   inlineAvatarStyle.backgroundImage = `url(${getUploadedImageUri(
+  //   inlineAvatarStyle.backgroundImage = `url(${(
   //     image,
   //     "600x320"
   //   )})`;

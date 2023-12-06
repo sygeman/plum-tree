@@ -1,9 +1,9 @@
 import get from "lodash.get";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import PeopleSelect from "../PeopleSelect";
+import { PeopleSelect } from "../people-select";
 
-export default ({ index, onChange, onRemove, partner, people }) => {
+export const PartnerRow = ({ index, onChange, onRemove, partner, people }) => {
   const [type, setType] = useState(get(partner, "type", "PARTNER"));
   const [partners, setPartners] = useState(
     get(partner, "people", []).map((p) => ({

@@ -1,9 +1,9 @@
 import get from "lodash.get";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import defaultAvatar from "../../../../common/images/default-avatar.png";
-import { getUploadedImageUri } from "../../../../common/js/utils";
-import PersonSelect from "../PersonSelect";
+import { PersonSelect } from "../person-select";
+
+import defaultAvatar from "/default-avatar.png";
 
 export const Person = ({ close, node, onSave, people }) => {
   const personId = get(node, "data.person._id");
@@ -21,7 +21,7 @@ export const Person = ({ close, node, onSave, people }) => {
   }
 
   const backgroundImage = get(person, "avatar")
-    ? `url(${getUploadedImageUri(person.avatar, "200x200")})`
+    ? `url(${person.avatar})`
     : `url(${defaultAvatar})`;
   const peopleOptions = people.map((person) => {
     return {

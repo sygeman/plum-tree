@@ -1,8 +1,5 @@
 import get from "lodash.get";
-import React from "react";
 
-import Partner from "./Partner";
-import Person from "./Person";
 import {
   EDIT_BUTTON_PATTERN,
   NODE_BUTTON_RADIUS,
@@ -11,6 +8,8 @@ import {
   PARTNER_PADDING,
   PLUS_BUTTON_PATTERN,
 } from "./constants";
+import { Partner } from "./partner";
+import { Person } from "./person";
 
 export default ({
   addNode,

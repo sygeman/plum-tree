@@ -1,4 +1,3 @@
-import React from "react";
 import Select from "react-select";
 
 const customStyles = {
@@ -51,7 +50,12 @@ const customStyles = {
   },
 };
 
-export default ({ defaultValue, inputId, onValueChange, options }) => {
+export const PersonSelect = ({
+  defaultValue,
+  inputId,
+  onValueChange,
+  options,
+}) => {
   return (
     <Select
       defaultValue={defaultValue}
