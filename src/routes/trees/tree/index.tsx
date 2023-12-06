@@ -9,7 +9,6 @@ import { TREE_DEPTH, TREE_TOP_PADDING } from "./constants";
 import { Link } from "./link";
 import { Node } from "./node";
 import { PersonDetails } from "./person-details";
-import { TreeDetails } from "./tree-details";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -26,7 +25,6 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
   const [nodeToHighlight, setNodeToHighlight] = useState(null);
   const [nodePeopleToHighlight, setNodePeopleToHighlight] = useState([]);
   const [personDetails, setPersonDetails] = useState(null);
-  const [treeDetails, setTreeDetails] = useState(null);
   const [parentType, setParentType] = useState("NONE");
   const [parents, setParents] = useState([]);
   const [adoptiveParents, setAdoptiveParents] = useState([]);
@@ -135,16 +133,8 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
     setAdoptiveParents(adoptiveParents);
   }
 
-  function handleShowTreeDetails() {
-    setTreeDetails(true);
-  }
-
   function closePersonDetails() {
     setPersonDetails(null);
-  }
-
-  function closeTreeDetails() {
-    setTreeDetails(false);
   }
 
   function addNode(node) {
@@ -185,23 +175,12 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
   }
 
   const treeId = get(tree, "_id", "");
-  const treeTitle = get(tree, "title", "Untitled Tree");
-  const treeCover = get(tree, "cover");
-  const treeDescription = get(tree, "description", "");
 
   return (
     <div
       className="absolute inset-0 overflow-hidden bg-cover"
       style={{ backgroundImage: `url("/green-poly.jpg"` }}
     >
-      <div
-        className={"styles.showTreeDetails"}
-        onClick={handleShowTreeDetails}
-        style={onChange ? { top: 65 } : { top: 0 }}
-      >
-        <i className="icon-info" style={{ marginRight: 7 }} /> Tree Info
-      </div>
-
       {personDetails && (
         <PersonDetails
           adoptiveParents={adoptiveParents}
@@ -220,16 +199,6 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
           style={onChange ? { top: 65 } : { top: 0 }}
           traits={personDetails.traits}
           treeId={treeId}
-        />
-      )}
-
-      {treeDetails && (
-        <TreeDetails
-          closeDetails={closeTreeDetails}
-          description={treeDescription}
-          image={treeCover}
-          style={onChange ? { top: 65 } : { top: 0 }}
-          title={treeTitle}
         />
       )}
 
