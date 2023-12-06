@@ -4,9 +4,8 @@ import React, { useState } from "react";
 import defaultAvatar from "../../../../common/images/default-avatar.png";
 import { getUploadedImageUri } from "../../../../common/js/utils";
 import PersonSelect from "../PersonSelect";
-import styles from "./styles.scss";
 
-export default ({ close, node, onSave, people }) => {
+export const Person = ({ close, node, onSave, people }) => {
   const personId = get(node, "data.person._id");
   const [person, setPerson] = useState(
     people.find((person) => person._id === personId)
@@ -38,7 +37,10 @@ export default ({ close, node, onSave, people }) => {
     <div>
       <h2>Node Person</h2>
       <p>Select the primary person for this node.</p>
-      <div className={styles.personDetailsAvatar} style={{ backgroundImage }} />
+      <div
+        className={"styles.personDetailsAvatar"}
+        style={{ backgroundImage }}
+      />
 
       <div className="form-group">
         <PersonSelect

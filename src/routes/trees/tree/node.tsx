@@ -11,7 +11,6 @@ import {
   PARTNER_PADDING,
   PLUS_BUTTON_PATTERN,
 } from "./constants";
-import styles from "./styles.scss";
 
 export default ({
   addNode,
@@ -88,7 +87,7 @@ export default ({
     <g className="node" transform={`translate(${nodeX},${nodeY})`}>
       {!readonly && (
         <rect
-          className={styles.background}
+          className={"styles.background"}
           height={NODE_HEIGHT}
           rx={NODE_HEIGHT / 2}
           ry={NODE_HEIGHT / 2}
@@ -123,7 +122,7 @@ export default ({
 
       {!readonly && (
         <circle
-          className={`${styles.addChildIcon} add-node`}
+          className={`$'{styles.addChildIcon'} add-node`}
           cx={partners.length ? NODE_HEIGHT : NODE_HEIGHT / 2}
           cy={NODE_HEIGHT}
           fill={`url(#${PLUS_BUTTON_PATTERN})`}
@@ -134,7 +133,7 @@ export default ({
 
       {!readonly && (
         <circle
-          className={`${styles.editNodeIcon} edit-node`}
+          className={`${"styles.editNodeIcon"} edit-node`}
           cy={NODE_HEIGHT / 2}
           fill={`url(#${EDIT_BUTTON_PATTERN})`}
           onClick={() => editNode(nodeData)}

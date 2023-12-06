@@ -6,7 +6,6 @@ import {
   PARTNER_PADDING,
   TREE_DEPTH,
 } from "./constants";
-import styles from "./styles.scss";
 
 export default ({ linkData }) => {
   function drawPath() {
@@ -50,5 +49,5 @@ export default ({ linkData }) => {
     return path;
   }
 
-  return <path className={styles.link} d={drawPath()} />;
+  return <path className={"styles.link"} d={drawPath()} />;
 };

@@ -1,4 +1,3 @@
-// import styles from "./styles.scss";
 import get from "lodash.get";
 import { v4 } from "uuid";
 
@@ -86,7 +85,7 @@ const Person = (props) => {
         </defs>
       )}
       <circle
-        className={styles.avatar}
+        className={"styles.avatar"}
         cx={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}
         cy={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}
         fill={`url(#${fillId})`}

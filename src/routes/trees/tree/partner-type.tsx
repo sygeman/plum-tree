@@ -9,7 +9,6 @@ import {
   PARTNER_ABDUCTION_TOP_RADIUS,
   PARTNER_ABDUCTION_TOP_Y,
 } from "./constants";
-import styles from "./styles.scss";
 
 export default ({ type }) => {
   if (type === "PARTNER" || type === "EX_PARTNER") {
@@ -21,8 +20,8 @@ export default ({ type }) => {
       <g
         className={
           type === "EX_PARTNER"
-            ? `${styles.plus} ex-partner-symbol`
-            : `${styles.plus} partner-symbol`
+            ? `${"styles.plus"} ex-partner-symbol`
+            : `${"styles.plus"} partner-symbol`
         }
         transform={transform}
       >
@@ -45,7 +44,7 @@ export default ({ type }) => {
   if (type === "ABDUCTION") {
     return (
       <g
-        className={`${styles.abduction} abduction-symbol`}
+        className={`${"styles.abduction"} abduction-symbol`}
         transform="translate(-5,35)"
       >
         <circle
@@ -67,7 +66,7 @@ export default ({ type }) => {
   if (type === "MARRIED") {
     return (
       <polyline
-        className={`${styles.marriage} marriage-symbol`}
+        className={`${"styles.marriage"} marriage-symbol`}
         points="0,10 0,3 3,6 6,3 6,10"
         transform="translate(-2,35)"
       />

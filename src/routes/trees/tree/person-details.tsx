@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-// import styles from "./styles.scss";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import RawHTML from "./raw-html";
 // import { getUploadedImageUri } from "../../../common/js/utils";
@@ -41,24 +40,27 @@ export default ({
   // }
 
   return (
-    <div className={styles.personDetails} style={style}>
+    <div className={"styles.personDetails"} style={style}>
       {!readonly && (
         <Link
-          className={styles.editButton}
+          className={"styles.editButton"}
           to={`/trees/${treeId}/people/${personId}`}
         >
           <span>Edit</span>
         </Link>
       )}
       <div
-        className={styles.closeButton}
+        className={"styles.closeButton"}
         id="close-person-details"
         onClick={() => closeDetails()}
       >
         <span>Close</span>
       </div>
-      <div className={styles.personDetailsTop}>
-        <div className={styles.personDetailsAvatar} style={inlineAvatarStyle} />
+      <div className={"styles.personDetailsTop"}>
+        <div
+          className={"styles.personDetailsAvatar"}
+          style={inlineAvatarStyle}
+        />
         <h2 id="person-details-name">
           {firstName} {lastName}
         </h2>
@@ -78,9 +80,9 @@ export default ({
                 ? `url(${getUploadedImageUri(parent.avatar, "200x200")})`
                 : `url(${defaultAvatar})`;
               return (
-                <div className={styles.parentRow} key={index}>
+                <div className={"styles.parentRow"} key={index}>
                   <div
-                    className={styles.parentAvatar}
+                    className={"styles.parentAvatar"}
                     style={{ backgroundImage }}
                   />
                   <span className="person-details-biological-parent-name">
@@ -102,9 +104,9 @@ export default ({
                 ? `url(${getUploadedImageUri(parent.avatar, "200x200")})`
                 : `url(${defaultAvatar})`;
               return (
-                <div className={styles.parentRow} key={index}>
+                <div className={"styles.parentRow"} key={index}>
                   <div
-                    className={styles.parentAvatar}
+                    className={"styles.parentAvatar"}
                     style={{ backgroundImage }}
                   />
                   <span>
@@ -123,7 +125,7 @@ export default ({
           <div>
             {traits.map((trait, index) => {
               return (
-                <span className={styles.tag} key={index}>
+                <span className={"styles.tag"} key={index}>
                   {trait}
                 </span>
               );
@@ -138,7 +140,7 @@ export default ({
           <div>
             {aspirations.map((aspiration, index) => {
               return (
-                <span className={styles.tag} key={index}>
+                <span className={"styles.tag"} key={index}>
                   {aspiration}
                 </span>
               );
@@ -153,7 +155,7 @@ export default ({
 
           {lifeStates.map((lifeState, index) => {
             return (
-              <span className={styles.tag} key={index}>
+              <span className={"styles.tag"} key={index}>
                 {lifeState}
               </span>
             );
@@ -180,11 +182,14 @@ export default ({
         </div>
       )}
 
-      <div className={styles.linkDetailsToggle} onClick={handleToggleLinkData}>
+      <div
+        className={"styles.linkDetailsToggle"}
+        onClick={handleToggleLinkData}
+      >
         {linkDataVisible ? "Hide Link Details" : "Show Link Details"}
       </div>
       {linkDataVisible && (
-        <div className={styles.linkDetails}>
+        <div className={"styles.linkDetails"}>
           <div>
             Tree Id <code>{treeId}</code>
           </div>

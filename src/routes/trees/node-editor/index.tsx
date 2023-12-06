@@ -3,9 +3,8 @@ import { useState } from "react";
 import Parents from "./parents";
 import Partners from "./partners";
 import Person from "./person";
-import styles from "./styles.scss";
 
-export default ({ close, node, onChange, people = [], tree }) => {
+export const NodeEditor = ({ close, node, onChange, people = [], tree }) => {
   const [currentView, setCurrentView] = useState(null);
   const [editingNode, setEditingNode] = useState(node);
 
@@ -72,15 +71,15 @@ export default ({ close, node, onChange, people = [], tree }) => {
   }
 
   return (
-    <div className={styles.editNodeContainer}>
+    <div className={"styles.editNodeContainer"}>
       <div className="container">
         <div
-          className={styles.closeButton}
+          className={"styles.closeButton"}
           id="close-node-editor"
           onClick={close}
         >
           <span>Close</span>
-          <i className={styles.close} />
+          <i className={"styles.close"} />
         </div>
 
         <h1>Edit Node</h1>
@@ -118,7 +117,7 @@ export default ({ close, node, onChange, people = [], tree }) => {
 
         {currentView === null && (
           <div>
-            <div className={styles.editNodeSection}>
+            <div className={"'styles.editNodeSection'"}>
               <h2>Set Node Person</h2>
               <p>
                 A node person is the Sim you'll see on the left at each point in
@@ -134,7 +133,7 @@ export default ({ close, node, onChange, people = [], tree }) => {
               </button>
             </div>
 
-            <div className={styles.editNodeSection}>
+            <div className={"styles.editNodeSection"}>
               <h2>Set Node Partners</h2>
               <p>A Sim can have multiple partners current or past.</p>
               <button
@@ -146,7 +145,7 @@ export default ({ close, node, onChange, people = [], tree }) => {
               </button>
             </div>
 
-            <div className={styles.editNodeSection}>
+            <div className={"styles.editNodeSection"}>
               <h2>Set Node Parents</h2>
               <p>
                 Add extra information on how your Sim came to be and who raised
@@ -162,7 +161,7 @@ export default ({ close, node, onChange, people = [], tree }) => {
               </button>
             </div>
 
-            <div className={styles.editNodeSection}>
+            <div className={"styles.editNodeSection"}>
               <h2>Danger Zone</h2>
               <p>
                 Delete this node? Remember if you delete this node you will also

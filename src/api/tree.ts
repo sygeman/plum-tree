@@ -1,5 +1,5 @@
 import data from "./data.json";
 
-export const getTree = (id: string) => {
+export const getTree = (id?: string) => {
   return data;
 };

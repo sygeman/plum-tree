@@ -179,10 +179,10 @@ export const PersonEditor = () => {
   let imagePreview;
   if (avatar) {
     const style = { backgroundImage: `url(${avatarUri})` };
-    imagePreview = <div className={styles.personAvatarImage} style={style} />;
+    imagePreview = <div className={"styles.personAvatarImage"} style={style} />;
   } else {
     const style = { backgroundImage: `url(${defaultAvatar})` };
-    imagePreview = <div className={styles.personAvatarImage} style={style} />;
+    imagePreview = <div className={"styles.personAvatarImage"} style={style} />;
   }
 
   return (
@@ -262,7 +262,7 @@ export const PersonEditor = () => {
 
           {custom.map((c, i) => {
             return (
-              <div className={styles.customInfo} key={i}>
+              <div className={"styles.customInfo"} key={i}>
                 <input
                   className="form-control"
                   data-index={i}

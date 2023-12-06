@@ -8,7 +8,6 @@ import {
   NODE_HEIGHT,
   NODE_SMALL_AVATAR_RADIUS,
 } from "./constants";
-import styles from "./styles.scss";
 
 export default ({ links, small }) => {
   const [linksOpen, setLinksOpen] = useState(false);
@@ -38,7 +37,7 @@ export default ({ links, small }) => {
   return (
     <g className="person-link">
       <circle
-        className={`${styles.linksIcon} person-links`}
+        className={`${"styles.linksIcon"} person-links`}
         cx={centered + offset}
         cy={centered - offset}
         fill={`url(#${LINK_BUTTON_PATTERN})`}
@@ -49,7 +48,7 @@ export default ({ links, small }) => {
       {linksOpen && (
         <g transform={`translate(${listX},${listY})`}>
           <rect
-            className={styles.linkList}
+            className={"styles.linkList"}
             height={linkListHeight}
             rx="3"
             ry="3"
@@ -60,14 +59,14 @@ export default ({ links, small }) => {
             const { personId, treeId } = linkData;
             return (
               <g
-                className={`${styles.linkListItem} person-link`}
+                className={`${"styles.linkListItem"} person-link`}
                 key={index}
                 onClick={() => goToTree(treeId, personId)}
                 transform={`translate(0,${48 * index})`}
               >
                 <rect height="48" rx="3" ry="3" width="198" />
                 <text
-                  className={styles.linkListText}
+                  className={"styles.linkListText"}
                   transform="translate(10,30)"
                 >
                   {linkData.title}

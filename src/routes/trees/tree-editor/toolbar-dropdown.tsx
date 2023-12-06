@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const TreeToolbarDropdown = ({ id, items, label }) => {
+export const ToolbarDropdown = ({ id, items, label }) => {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -31,9 +31,9 @@ export const TreeToolbarDropdown = ({ id, items, label }) => {
   }
 
   return (
-    <div className={styles.toolbarDropdown} ref={wrapperRef}>
+    <div className={"styles.toolbarDropdown"} ref={wrapperRef}>
       <div
-        className={styles.toolbarItem}
+        className={"styles.toolbarItem"}
         id={id}
         onClick={handleDropdownToggle}
       >
@@ -41,13 +41,15 @@ export const TreeToolbarDropdown = ({ id, items, label }) => {
         <i
           className={
             open
-              ? `${styles.downArrow} ${styles.downArrowActive}`
-              : styles.downArrow
+              ? `${"styles.downArrow"} ${"styles.downArrowActive"}`
+              : "styles.downArrow"
           }
         />
       </div>
       <div
-        className={open ? `${styles.menu} ${styles.menuActive}` : styles.menu}
+        className={
+          open ? `${"styles.menu"} ${"styles.menuActive"}` : "styles.menu"
+        }
       >
         <ul>
           {items.map((menuItem, index) => {

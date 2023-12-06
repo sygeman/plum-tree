@@ -2,7 +2,6 @@ import get from "lodash.get";
 import React, { useEffect, useState } from "react";
 
 import PeopleSelect from "../PeopleSelect";
-import styles from "./styles.scss";
 
 export default ({ index, onChange, onRemove, partner, people }) => {
   const [type, setType] = useState(get(partner, "type", "PARTNER"));
@@ -29,7 +28,7 @@ export default ({ index, onChange, onRemove, partner, people }) => {
   }
 
   return (
-    <div className={styles.partnerTile}>
+    <div className={"styles.partnerTile"}>
       <div className="form-group">
         <label>Partner Sim(s)</label>
         <PeopleSelect

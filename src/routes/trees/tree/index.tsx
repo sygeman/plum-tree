@@ -9,7 +9,6 @@ import { TREE_DEPTH, TREE_TOP_PADDING } from "./constants";
 import Link from "./link";
 import Node from "./node";
 import PersonDetails from "./person-details";
-import styles from "./styles.scss";
 
 function usePrevious(value) {
   const ref = useRef();
@@ -190,9 +189,9 @@ export const Tree = ({ onChange, onEditNode, people = [], readonly, tree }) => {
   const treeDescription = get(tree, "description", "");
 
   return (
-    <div className={styles.root}>
+    <div className={"styles.root"}>
       <div
-        className={styles.showTreeDetails}
+        className={"styles.showTreeDetails"}
         onClick={handleShowTreeDetails}
         style={onChange ? { top: 65 } : { top: 0 }}
       >

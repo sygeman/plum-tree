@@ -1,4 +1,3 @@
-// import styles from "./styles.scss";
 import RawHTML from "./raw-html";
 
 // .treeDetails {

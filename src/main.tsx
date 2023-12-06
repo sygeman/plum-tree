@@ -5,10 +5,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "./layout";
 import "./main.css";
 import { IndexPage } from "./routes/index";
-import { PersonEditor } from "./routes/trees/person-editor";
-import { PersonLinker } from "./routes/trees/person-linker";
+// import { PersonEditor } from "./routes/trees/person-editor";
+// import { PersonLinker } from "./routes/trees/person-linker";
 import { TreeEditor } from "./routes/trees/tree-editor";
-import { TreePeople } from "./routes/trees/tree-people";
+// import { TreePeople } from "./routes/trees/tree-people";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Layout>
           <Routes>
             <Route element={<IndexPage />} path="/" />
-            {/* <Route element={<TreeEditor />} path="/trees/:treeId" />
-            <Route element={<TreePeople />} path="/trees/:treeId/people" />
+            <Route element={<TreeEditor />} path="/trees/:treeId" />
+            {/* <Route element={<TreePeople />} path="/trees/:treeId/people" />
             <Route
               element={<PersonEditor />}
               path="/trees/:treeId/people/add"

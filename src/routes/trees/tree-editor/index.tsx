@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import NodeEdit from "../node-editor";
-import Tree from "../tree";
-// import styles from "./styles.scss";
+import { Tree } from "../tree";
 import { TreeToolbar } from "./toolbar";
 
 // .toolbar, .toolbarMobile {
@@ -170,10 +169,9 @@ import { TreeToolbar } from "./toolbar";
 import { getTree } from "@/api/tree";
 
 export const TreeEditor = () => {
-  const params = useParams();
-
-  const [tree, setTree] = useState(getTree(""));
-  const [people, setPeople] = useState(getTree("").people);
+  const { treeId } = useParams();
+  const [tree, setTree] = useState(getTree(treeId));
+  const [people, setPeople] = useState(getTree(treeId).people);
   const [readonly, setReadonly] = useState(false);
   const [nodeToEdit, setNodeToEdit] = useState(null);
 
@@ -182,7 +180,7 @@ export const TreeEditor = () => {
   }
 
   return (
-    <div className={styles.root}>
+    <div>
       <h1 className="sr-only">Tree Editor</h1>
       <Tree
         onChange={saveTree}

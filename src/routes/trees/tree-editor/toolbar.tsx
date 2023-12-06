@@ -2,9 +2,8 @@ import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import styles from "./styles.scss";
 
-import ToolbarDropdown from "./toolbar-dropdown";
+import { ToolbarDropdown } from "./toolbar-dropdown";
 
 export const TreeToolbar = ({
   saveTree: onSaveTree,
@@ -64,12 +63,12 @@ export const TreeToolbar = ({
     }
   }
 
-  const burgerClassNames = [styles.hamburger];
-  const mobileMenuClassNames = [styles.menuMobile];
+  const burgerClassNames = ["styles.hamburger"];
+  const mobileMenuClassNames = ["styles.menuMobile"];
 
   if (mobileMenuOpen) {
-    burgerClassNames.push(styles.hamburgerActive);
-    mobileMenuClassNames.push(styles.menuMobileActive);
+    burgerClassNames.push("styles.hamburgerActive");
+    mobileMenuClassNames.push("styles.menuMobileActive");
   }
 
   const ACTION_MENU_ITEMS = [
@@ -116,8 +115,8 @@ export const TreeToolbar = ({
     <div>
       {/* Desktop Menu */}
       <div className="hidden-xs-down">
-        <div className={styles.toolbar}>
-          <span className={styles.toolbarTitle}>Tree Editor</span>
+        <div className={"styles.toolbar"}>
+          <span className={"styles.toolbarTitle"}>Tree Editor</span>
           <ToolbarDropdown
             id="actions-dropdown"
             items={ACTION_MENU_ITEMS}
@@ -134,7 +133,7 @@ export const TreeToolbar = ({
             type="checkbox"
           />
           <label
-            className={[styles.toolbarItem, "checkbox"].join(" ")}
+            className={["styles.toolbarItem", "checkbox"].join(" ")}
             onClick={handleTogglePreview}
           >
             <span /> Preview
@@ -144,12 +143,12 @@ export const TreeToolbar = ({
       {/* Mobile Menu */}
       <div className="hidden-sm-up">
         <div
-          className={styles.toolbarMobile}
+          className={"styles.toolbarMobile"}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <span className={styles.toolbarTitle}>Tree Editor</span>
+          <span className={"styles.toolbarTitle"}>Tree Editor</span>
 
-          <div className={styles.menuButton}>
+          <div className={"styles.menuButton"}>
             <i className={burgerClassNames.join(" ")}>
               <div />
               <div />
@@ -160,7 +159,7 @@ export const TreeToolbar = ({
 
         <div className={mobileMenuClassNames.join(" ")}>
           <ul>
-            <div className={styles.mobileMenuHeading}>Actions</div>
+            <div className={"styles.mobileMenuHeading"}>Actions</div>
             {ACTION_MENU_ITEMS.map((menuItem, index) => {
               return (
                 <li key={index}>
@@ -176,7 +175,7 @@ export const TreeToolbar = ({
                 </li>
               );
             })}
-            <div className={styles.mobileMenuHeading}>Edit</div>
+            <div className={"styles.mobileMenuHeading"}>Edit</div>
             {EDIT_MENU_ITEMS.map((menuItem, index) => {
               return (
                 <li key={index}>
@@ -192,7 +191,7 @@ export const TreeToolbar = ({
                 </li>
               );
             })}
-            <div className={styles.mobileMenuHeading}>Preview</div>
+            <div className={"styles.mobileMenuHeading"}>Preview</div>
             <input
               checked={previewMode}
               onChange={handleTogglePreview}
