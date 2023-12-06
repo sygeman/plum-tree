@@ -173,7 +173,6 @@ import data from "../../../../data/data-641f24449a150cba09f92d5b.json";
 export const TreeEditor = () => {
   const params = useParams();
   const { treeId } = params;
-  const [loading, setLoading] = useState(false);
   const [tree, setTree] = useState(data);
   const [people, setPeople] = useState(data.people);
   const [readonly, setReadonly] = useState(false);
@@ -188,7 +187,6 @@ export const TreeEditor = () => {
     <div className={styles.root}>
       <h1 className="sr-only">Tree Editor</h1>
       <Tree
-        loading={loading}
         onChange={saveTree}
         onEditNode={setNodeToEdit}
         people={people}

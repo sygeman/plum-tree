@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Loading } from "../../components/loading";
-
 // .linkTile {
 //   border: 1px solid $grey-lightest;
 //   border-bottom-width: 2px;
@@ -46,18 +44,16 @@ export const PersonLinker = () => {
   const [person, setPerson] = useState("");
   const [tree, setTree] = useState("");
   const [links, setLinks] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`/api/people/${personId}`)
       .then((response) => {
         const links = get(response, "data.links", []);
-        setLoading(false);
+
         setLinks(links);
       })
       .catch((error) => {
-        setLoading(false);
         toast.error(
           get(
             error,
@@ -117,10 +113,6 @@ export const PersonLinker = () => {
           { autoClose: false }
         );
       });
-  }
-
-  if (loading) {
-    return <Loading message="Loading Person Links" />;
   }
 
   const cancelClass = ["mr-2", "btn", "btn-default"].join(" ");

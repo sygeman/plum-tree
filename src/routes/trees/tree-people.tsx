@@ -1,11 +1,10 @@
 import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import defaultAvatar from "../../assets/default-avatar.png";
-import { Loading } from "../../components/loading";
 
 // .loading {
 //   text-align: center;
@@ -63,17 +62,13 @@ import { Loading } from "../../components/loading";
 
 export const TreePeople = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const { treeId } = params;
-  const [loading, setLoading] = useState(false);
   const [people, setPeople] = useState([]);
   const [tree, setTree] = useState(null);
   const [filter, setFilter] = useState("");
   const [filteredPeople, setFilteredPeople] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-
     axios
       .all([
         axios.get(`/api/people?tree=${treeId}`),
@@ -88,11 +83,9 @@ export const TreePeople = () => {
           setTree(tree);
           setFilter("");
           setFilteredPeople(people);
-          setLoading(false);
         })
       )
       .catch((error) => {
-        setLoading(false);
         toast.error(
           get(
             error,
@@ -186,10 +179,6 @@ export const TreePeople = () => {
         _removePersonFromTree(personId, child)
       );
     }
-  }
-
-  if (loading) {
-    return <Loading message="Loading people" />;
   }
 
   const personCreateLink = `/trees/${treeId}/people/add`;

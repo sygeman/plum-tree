@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { Loading } from "../../components/loading";
-
 export const TreeDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -14,7 +12,6 @@ export const TreeDetails = () => {
   const [description, setDescription] = useState("");
   const [cover, setCover] = useState(null);
   const [coverUri, setCoverUri] = useState(null);
-  const [loading, setLoading] = useState(!!treeId);
 
   useEffect(() => {
     if (treeId) {
@@ -26,10 +23,8 @@ export const TreeDetails = () => {
           setDescription(description);
           setCover(cover);
           // setCoverUri(getUploadedImageUri(cover, "600x320"));
-          setLoading(false);
         })
         .catch((error) => {
-          setLoading(false);
           toast.error(
             get(
               error,
@@ -101,10 +96,6 @@ export const TreeDetails = () => {
           { autoClose: false }
         );
       });
-  }
-
-  if (loading) {
-    return <Loading message="Loading..." />;
   }
 
   const cancelLink = treeId ? `/trees/${treeId}` : "/";

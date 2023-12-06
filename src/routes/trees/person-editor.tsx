@@ -6,7 +6,6 @@ import Select from "react-select/creatable";
 import { toast } from "react-toastify";
 
 import defaultAvatar from "../../assets/default-avatar.png";
-import { Loading } from "../../components/loading";
 import { aspirationOptions } from "../../utils/aspirations";
 import { lifeStateOptions } from "../../utils/life-states";
 import { traitOptions } from "../../utils/traits";
@@ -74,7 +73,6 @@ export const PersonEditor = () => {
   const [aspirations, setAspirations] = useState([]);
   const [lifeStates, setLifeStates] = useState([]);
   const [custom, setCustom] = useState([]);
-  const [loading, setLoading] = useState(Boolean(personId));
 
   useEffect(() => {
     if (personId) {
@@ -100,10 +98,8 @@ export const PersonEditor = () => {
           setAspirations(aspirations);
           setLifeStates(lifeStates);
           setCustom(custom);
-          setLoading(false);
         })
         .catch((error) => {
-          setLoading(false);
           toast.error("Failed to get person info", { autoClose: false });
         });
     }
@@ -211,10 +207,6 @@ export const PersonEditor = () => {
     });
 
     setCustom(newCustom);
-  }
-
-  if (loading) {
-    return <Loading message="Loading person editor" />;
   }
 
   let imagePreview;
