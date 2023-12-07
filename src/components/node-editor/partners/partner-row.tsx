@@ -1,110 +1,38 @@
+import { Button, Group, MultiSelect, Radio } from "@mantine/core";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
-
-import { PeopleSelect } from "../people-select";
 
 export const PartnerRow = ({ index, onChange, onRemove, partner, people }) => {
   const [type, setType] = useState(get(partner, "type", "PARTNER"));
   const [partners, setPartners] = useState(
-    get(partner, "people", []).map((p) => ({
-      label: `${p.firstName} ${p.lastName}`,
-      value: p._id,
-    }))
+    get(partner, "people", []).map((p) => p._id)
   );
 
   useEffect(() => {
-    onChange(index, {
-      partners,
-      type,
-    });
-  }, [type, partners]);
-
-  function handleTypeChange(event) {
-    setType(event.target.value);
-  }
-
-  function handleRemovePartner() {
-    onRemove(index);
-  }
+    onChange(index, { partners, type });
+  }, [type, partners, onChange, index]);
 
   return (
-    <div className={"styles.partnerTile"}>
-      <div className="form-group">
-        <label>Partner Sim(s)</label>
-        <PeopleSelect
-          defaultValues={partners}
-          inputId={`node-partner-select-${index}`}
-          onValuesChange={setPartners}
-          options={people}
-        />
-      </div>
+    <div className="my-4">
+      <MultiSelect
+        data={people}
+        label="Partner Sim(s)"
+        onChange={setPartners}
+        value={partners}
+      />
 
-      <div className="form-group">
-        <label>Partner Type</label>
-        <input
-          checked={type === "PARTNER"}
-          id={`partner-${index}`}
-          name={`type-${index}`}
-          onChange={handleTypeChange}
-          type="radio"
-          value="PARTNER"
-        />
-        <label
-          className="radio"
-          htmlFor={`partner-${index}`}
-          id={`partner-label-${index}`}
-        >
-          <span /> Partner
-        </label>
-        <input
-          checked={type === "EX_PARTNER"}
-          id={`ex-partner-${index}`}
-          name={`type-${index}`}
-          onChange={handleTypeChange}
-          type="radio"
-          value="EX_PARTNER"
-        />
-        <label
-          className="radio"
-          htmlFor={`ex-partner-${index}`}
-          id={`ex-partner-label-${index}`}
-        >
-          <span /> Ex-Partner
-        </label>
-        <input
-          checked={type === "MARRIED"}
-          id={`married-${index}`}
-          name={`type-${index}`}
-          onChange={handleTypeChange}
-          type="radio"
-          value="MARRIED"
-        />
-        <label
-          className="radio"
-          htmlFor={`married-${index}`}
-          id={`married-label-${index}`}
-        >
-          <span /> Married
-        </label>
-        <input
-          checked={type === "ABDUCTION"}
-          id={`abduction-${index}`}
-          name={`type-${index}`}
-          onChange={handleTypeChange}
-          type="radio"
-          value="ABDUCTION"
-        />
-        <label
-          className="radio"
-          htmlFor={`abduction-${index}`}
-          id={`abduction-label-${index}`}
-        >
-          <span /> Abduction
-        </label>
-      </div>
-      <button className="btn btn-danger" onClick={handleRemovePartner}>
+      <Radio.Group label="Partner Type" onChange={setType} value={type}>
+        <Group>
+          <Radio label="Partner" value="PARTNER" />
+          <Radio label="Ex-Partner" value="EX_PARTNER" />
+          <Radio label="Married" value="MARRIED" />
+          <Radio label="Abduction" value="ABDUCTION" />
+        </Group>
+      </Radio.Group>
+
+      <Button className="mt-4" onClick={onRemove} variant="default">
         Remove Partner
-      </button>
+      </Button>
     </div>
   );
 };

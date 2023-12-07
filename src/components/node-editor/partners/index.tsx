@@ -1,3 +1,4 @@
+import { Button } from "@mantine/core";
 import get from "lodash.get";
 import { useState } from "react";
 
@@ -7,14 +8,7 @@ export const Partners = ({ close, node, onSave, people }) => {
   const [partners, setPartners] = useState(get(node, "data.partners", []));
 
   function handleAddPartner() {
-    setPartners(
-      partners.concat([
-        {
-          people: [],
-          type: "PARTNER",
-        },
-      ])
-    );
+    setPartners(partners.concat([{ people: [], type: "PARTNER" }]));
   }
 
   function removePartner(index) {
@@ -24,8 +18,8 @@ export const Partners = ({ close, node, onSave, people }) => {
   function partnerUpdated(partnerRowIndex, partner) {
     const { partners: partnerRowPartners, type } = partner;
     const newPartner = {
-      people: partnerRowPartners.map((partner) =>
-        people.find((person) => person._id === partner.value)
+      people: partnerRowPartners.map((partnerId) =>
+        people.find((person) => person._id === partnerId)
       ),
       type,
     };
@@ -50,16 +44,10 @@ export const Partners = ({ close, node, onSave, people }) => {
   });
 
   return (
-    <div>
-      <h2>Persons Partners</h2>
-      <p>Add partners by using the "Add Partner" button and selecting Sims.</p>
-      <button
-        className="btn btn-primary"
-        id="add-node-partner"
-        onClick={handleAddPartner}
-      >
-        <i className="icon-plus" /> Add Partner
-      </button>
+    <div className="mt-4">
+      <Button onClick={handleAddPartner} variant="default">
+        Add Partner
+      </Button>
 
       {partners.map((partner, index) => {
         return (
@@ -67,23 +55,21 @@ export const Partners = ({ close, node, onSave, people }) => {
             index={index}
             key={index}
             onChange={partnerUpdated}
-            onRemove={removePartner}
+            onRemove={() => removePartner(index)}
             partner={partner}
             people={peopleOptions}
           />
         );
       })}
 
-      <button className="btn btn-default" onClick={close}>
-        Cancel
-      </button>
-      <button
-        className="btn btn-primary"
-        id="save-node-partners"
-        onClick={handleSaveNodePartners}
-      >
-        Save
-      </button>
+      <div className="flex space-x-2 justify-end mt-4">
+        <Button onClick={close} variant="default">
+          Cancel
+        </Button>
+        <Button onClick={handleSaveNodePartners} variant="default">
+          Save
+        </Button>
+      </div>
     </div>
   );
 };

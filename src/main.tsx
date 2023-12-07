@@ -9,9 +9,7 @@ import "./main.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MantineProvider defaultColorScheme="dark">
-      <div className="absolute w-full inset-0 overflow-hidden">
-        <TreeEditor />
-      </div>
+      <TreeEditor />
     </MantineProvider>
   </React.StrictMode>
 );
