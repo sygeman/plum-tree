@@ -1,7 +1,6 @@
 import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 
 import defaultAvatar from "/default-avatar.png";
 
@@ -60,8 +59,7 @@ import defaultAvatar from "/default-avatar.png";
 // }
 
 export const TreePeople = () => {
-  const params = useParams();
-  const { treeId } = params;
+  const treeId = "";
   const [people, setPeople] = useState([]);
   const [tree, setTree] = useState(null);
   const [filter, setFilter] = useState("");
@@ -169,7 +167,7 @@ export const TreePeople = () => {
         or edit existing people already in the tree.
       </p>
       <div className={"styles.navButtons"}>
-        <Link
+        {/* <Link
           className="btn btn-default"
           id="back-to-tree"
           to={`/trees/${treeId}`}
@@ -182,7 +180,7 @@ export const TreePeople = () => {
           to={personCreateLink}
         >
           <i className="icon-plus" /> Add Someone New
-        </Link>
+        </Link> */}
       </div>
       <div className="form-group">
         <label>Search</label>
@@ -222,7 +220,7 @@ export const TreePeople = () => {
             <div className={"styles.avatar"} style={inlineAvatarStyle} />
             <div>{name}</div>
             <div className={"styles.personMenu"}>
-              <Link
+              {/* <Link
                 className="btn btn-small btn-default edit-person"
                 to={personEditLink}
               >
@@ -233,7 +231,7 @@ export const TreePeople = () => {
                 to={personLinkLink}
               >
                 Link
-              </Link>
+              </Link> */}
               <button
                 className="btn btn-small btn-danger delete-person"
                 onClick={() => deletePerson(person._id)}

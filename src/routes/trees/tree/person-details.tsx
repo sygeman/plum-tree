@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
-import { RawHTML } from "./raw-html";
 
 import defaultAvatar from "/default-avatar.png";
 
@@ -69,14 +66,14 @@ export const PersonDetails = ({
       className="absolute z-100 bottom-0 right-0 w-[300px] m-4 p-4 bg-[#f4f7f6] overflow-auto"
       style={style}
     >
-      {!readonly && (
+      {/* {!readonly && (
         <Link
           className={"styles.editButton"}
           to={`/trees/${treeId}/people/${personId}`}
         >
           <span>Edit</span>
         </Link>
-      )}
+      )} */}
       <div
         className={"styles.closeButton"}
         id="close-person-details"
@@ -104,9 +101,7 @@ export const PersonDetails = ({
           {firstName} {lastName}
         </h2>
       </div>
-      <div>
-        <RawHTML html={bio} />
-      </div>
+      <div>{bio}</div>
 
       {parents.length > 0 && (
         <div>

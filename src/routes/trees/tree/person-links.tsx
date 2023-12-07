@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import {
   LINK_BUTTON_PATTERN,
@@ -11,17 +10,16 @@ import {
 
 export const PersonLinks = ({ links, small }) => {
   const [linksOpen, setLinksOpen] = useState(false);
-  const navigate = useNavigate();
 
   function handleToggleLinks() {
     setLinksOpen(!linksOpen);
   }
 
   function goToTree(treeId, personId) {
-    navigate({
-      pathname: `/public/${treeId}`,
-      search: `?p=${personId}`,
-    });
+    // navigate({
+    //   pathname: `/public/${treeId}`,
+    //   search: `?p=${personId}`,
+    // });
   }
 
   // icon position

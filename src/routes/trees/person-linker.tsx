@@ -1,44 +1,10 @@
 import axios from "axios";
 import get from "lodash.get";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-
-// .linkTile {
-//   border: 1px solid $grey-lightest;
-//   border-bottom-width: 2px;
-//   border-radius: $default-border-radius;
-//   transition: border $transition-speed linear;
-//   margin: 15px 0px;
-//   color: $font-color;
-//   text-decoration: none;
-//   position: relative;
-
-//   &:hover {
-//     border-bottom-color: $color1;
-
-//     .tileArrow {
-//       color: $color1;
-//     }
-//   }
-// }
-
-// .linkDetails {
-//   padding: 10px 15px;
-// }
-
-// .linkMenu {
-//   position: absolute;
-//   top: 5px;
-//   right: 5px;
-
-//   a, button {
-//     margin-left: 5px;
-//   }
-// }
 
 export const PersonLinker = () => {
-  const params = useParams();
-  const { personId, treeId } = params;
+  const personId = "";
+  const treeId = "";
   const [title, setTitle] = useState("");
   const [person, setPerson] = useState("");
   const [tree, setTree] = useState("");
@@ -127,9 +93,9 @@ export const PersonLinker = () => {
             value={person}
           />
         </div>
-        <Link className={cancelClass} to={cancelLink}>
+        {/* <Link className={cancelClass} to={cancelLink}>
           <i className="icon-chevron-left" /> Back to Tree People
-        </Link>
+        </Link> */}
         <button className={submitClass} id="submit-tree-link" type="submit">
           <i className="icon-plus" /> Link Person
         </button>

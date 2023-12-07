@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
 import Select from "react-select/creatable";
 
 import { aspirationOptions } from "../../utils/aspirations";
@@ -9,60 +8,9 @@ import { traitOptions } from "../../utils/traits";
 
 import defaultAvatar from "/default-avatar.png";
 
-// .personAvatarContainer {
-//   text-align: center;
-// }
-
-// .personAvatarImage {
-//   width: 70px;
-//   height: 70px;
-//   border-radius: 50%;
-//   border: $color-white solid 4px;
-//   box-shadow: 0 2px 3px 0 rgba(0,0,0,.075);
-//   display: block;
-//   margin: 0px auto;
-//   margin-bottom: 10px;
-//   background-position: center center;
-//   background-size: cover;
-// }
-
-// .avatarButtons {
-//   margin: 0px 10px !important;
-// }
-
-// .customInfo {
-//   display: flex;
-//   margin-bottom: 15px;
-
-//   button {
-//     margin: 0px;
-
-//     &:hover,
-//     &:focus{
-//       transform: translateY(0px);
-//     }
-//   }
-
-//   * {
-//     border-radius: 0px;
-//   }
-
-//   :first-child {
-//     border-top-left-radius: $input-border-radius;
-//     border-bottom-left-radius: $input-border-radius;
-//     border-right: none;
-//   }
-
-//   :last-child {
-//     border-top-right-radius: $input-border-radius;
-//     border-bottom-right-radius: $input-border-radius;
-//   }
-// }
-
 export const PersonEditor = () => {
-  const navigate = useNavigate();
-  const params = useParams();
-  const { personId, treeId } = params;
+  const treeId = "";
+  const personId = "";
   const [avatar, setAvatar] = useState(null);
   const [avatarUri, setAvatarUri] = useState(null);
   const [firstName, setFirstName] = useState("");
@@ -131,13 +79,13 @@ export const PersonEditor = () => {
 
   function _createPerson(person) {
     axios.post("/api/people", person).then(() => {
-      navigate(`/trees/${treeId}/people`);
+      // navigate(`/trees/${treeId}/people`);
     });
   }
 
   function _updatePerson(person) {
     axios.put(`/api/people/${personId}`, person).then(() => {
-      navigate(-1);
+      // navigate(-1);
     });
   }
 
@@ -294,9 +242,9 @@ export const PersonEditor = () => {
           })}
         </div>
 
-        <Link className="btn btn-default" to={`/trees/${treeId}/people`}>
+        {/* <Link className="btn btn-default" to={`/trees/${treeId}/people`}>
           Cancel
-        </Link>
+        </Link> */}
         <button className="btn btn-primary" id="save-person" type="submit">
           {personId ? "Update Person" : "Create Person"}
         </button>
