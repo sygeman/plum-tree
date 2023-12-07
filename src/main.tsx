@@ -3,8 +3,8 @@ import "@mantine/core/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import { TreeEditor } from "./components/tree-editor";
 import "./main.css";
-import { TreeEditor } from "./routes/trees/tree-editor";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

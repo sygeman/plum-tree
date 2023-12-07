@@ -1,10 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Select from "react-select/creatable";
-
-import { aspirationOptions } from "../../utils/aspirations";
-import { lifeStateOptions } from "../../utils/life-states";
-import { traitOptions } from "../../utils/traits";
+import { aspirationOptions } from "@/utils/aspirations";
+import { lifeStateOptions } from "@/utils/life-states";
+import { traitOptions } from "@/utils/traits";
+import { useState } from "react";
 
 import defaultAvatar from "/default-avatar.png";
 
@@ -20,32 +17,6 @@ export const PersonEditor = () => {
   const [aspirations, setAspirations] = useState([]);
   const [lifeStates, setLifeStates] = useState([]);
   const [custom, setCustom] = useState([]);
-
-  useEffect(() => {
-    if (personId) {
-      axios.get(`/api/people/${personId}`).then((response) => {
-        const {
-          aspirations,
-          avatar,
-          bio,
-          custom,
-          firstName,
-          lastName,
-          lifeStates,
-          traits,
-        } = response.data;
-        setAvatar(avatar);
-        // setAvatarUri(getUploadedImageUri(avatar, "200x200"));
-        setFirstName(firstName);
-        setLastName(lastName);
-        setBio(bio);
-        setTraits(traits);
-        setAspirations(aspirations);
-        setLifeStates(lifeStates);
-        setCustom(custom);
-      });
-    }
-  }, []);
 
   function updateAvatar(image) {
     // setAvatarUri(getOrigUploadedImageUri(image));
@@ -77,17 +48,9 @@ export const PersonEditor = () => {
     }
   }
 
-  function _createPerson(person) {
-    axios.post("/api/people", person).then(() => {
-      // navigate(`/trees/${treeId}/people`);
-    });
-  }
+  function _createPerson(person) {}
 
-  function _updatePerson(person) {
-    axios.put(`/api/people/${personId}`, person).then(() => {
-      // navigate(-1);
-    });
-  }
+  function _updatePerson(person) {}
 
   function handleAddCustomRow(event) {
     event.preventDefault();

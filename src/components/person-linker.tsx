@@ -1,6 +1,4 @@
-import axios from "axios";
-import get from "lodash.get";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const PersonLinker = () => {
   const personId = "";
@@ -10,12 +8,12 @@ export const PersonLinker = () => {
   const [tree, setTree] = useState("");
   const [links, setLinks] = useState<any[]>([]);
 
-  useEffect(() => {
-    axios.get(`/api/people/${personId}`).then((response) => {
-      const links = get(response, "data.links", []);
-      setLinks(links);
-    });
-  }, []);
+  // useEffect(() => {
+  //   .get(`/api/people/${personId}`).then((response) => {
+  //     const links = get(response, "data.links", []);
+  //     setLinks(links);
+  //   });
+  // }, []);
 
   function handleSubmit(event: any) {
     event.preventDefault();
@@ -26,9 +24,9 @@ export const PersonLinker = () => {
       treeId: tree,
     });
 
-    axios.put(`/api/people/${personId}`, { links }).then((response) => {
-      setLinks(response.data.links);
-    });
+    // put(`/api/people/${personId}`, { links }).then((response) => {
+    //   setLinks(response.data.links);
+    // });
   }
 
   function deleteLink(linkData: any) {
@@ -36,11 +34,10 @@ export const PersonLinker = () => {
       return link !== linkData;
     });
 
-    axios
-      .put(`/api/people/${personId}`, { links: newLinks })
-      .then((response) => {
-        setLinks(response.data.links);
-      });
+    // .put(`/api/people/${personId}`, { links: newLinks })
+    // .then((response) => {
+    //   setLinks(response.data.links);
+    // });
   }
 
   const cancelClass = ["mr-2", "btn", "btn-default"].join(" ");
