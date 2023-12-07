@@ -2,11 +2,7 @@ import { Button, Group, MultiSelect, Radio } from "@mantine/core";
 import get from "lodash.get";
 import { useState } from "react";
 
-import { PeopleSelect } from "./people-select";
-
 export const Parents = ({ close, node, onSave, people }) => {
-  console.log(node);
-
   const [conception, setConception] = useState(
     get(node, "data.parentType", "NONE")
   );
