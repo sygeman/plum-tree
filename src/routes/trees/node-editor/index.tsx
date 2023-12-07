@@ -1,3 +1,4 @@
+import { Button } from "@mantine/core";
 import { useState } from "react";
 
 import { Parents } from "./parents";
@@ -9,12 +10,12 @@ const NodeEditorBlock = ({ action, actionTitle, description, title }) => {
     <div className="py-2">
       <h2 className="text-xl font-semibold">{title}</h2>
       <p>{description}</p>
-      <button
+      <Button
         className="bg-green-700 text-white px-4 rounded py-1 my-2"
         onClick={action}
       >
         {actionTitle}
-      </button>
+      </Button>
     </div>
   );
 };
@@ -86,7 +87,7 @@ export const NodeEditor = ({ close, node, onChange, people = [], tree }) => {
   }
 
   return (
-    <div className="absolute inset-0 bg-white flex flex-col items-center">
+    <div className="absolute inset-0 bg-gray-800 flex flex-col items-center">
       <div className="w-[600px] p-4">
         <button
           className="absolute right-0 px-4"

@@ -1,3 +1,5 @@
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -13,7 +15,7 @@ import { TreeEditor } from "./routes/trees/tree-editor";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <div>
+      <MantineProvider defaultColorScheme="dark">
         <Layout>
           <Routes>
             <Route element={<IndexPage />} path="/" />
@@ -33,7 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             /> */}
           </Routes>
         </Layout>
-      </div>
+      </MantineProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
