@@ -1,9 +1,12 @@
+import { updateNode } from "@/api/tree";
+import { nodeToEdit, tree } from "@/state";
 import { Button, Select } from "@mantine/core";
 import get from "lodash.get";
 import { useState } from "react";
 
-export const Person = ({ close, node, onSave, people }) => {
-  const personId = get(node, "data.person._id");
+export const Person = ({ close }) => {
+  const people = tree.value.people;
+  const personId = get(nodeToEdit.value, "data.person._id");
   const [person, setPerson] = useState(
     people.find((person) => person._id === personId)
   );
@@ -13,7 +16,7 @@ export const Person = ({ close, node, onSave, people }) => {
   }
 
   function handleSaveNodePerson() {
-    onSave({ person });
+    updateNode({ person });
     close();
   }
 

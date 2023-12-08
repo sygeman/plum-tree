@@ -1,3 +1,4 @@
+import { tree } from "@/state";
 import { select } from "d3-selection";
 import { zoom as d3Zoom } from "d3-zoom";
 import get from "lodash.get";
@@ -12,8 +13,8 @@ import { Link } from "./link";
 import { Node } from "./node";
 import { PersonDetails } from "./person-details";
 
-export const Tree = ({ onChange, onEditNode, readonly, tree }) => {
-  const people = tree.people;
+export const Tree = () => {
+  const people = tree.value.people;
 
   const [zoomInitialized, setZoomInitialized] = useState(false);
   const [links, setLinks] = useState([]);
@@ -25,7 +26,7 @@ export const Tree = ({ onChange, onEditNode, readonly, tree }) => {
   const [parents, setParents] = useState([]);
   const [adoptiveParents, setAdoptiveParents] = useState([]);
 
-  const prevTree = usePrevious(tree);
+  const prevTree = usePrevious(tree.value);
 
   const svg = useRef(null);
   const zoom = useRef(null);
@@ -39,13 +40,13 @@ export const Tree = ({ onChange, onEditNode, readonly, tree }) => {
     // remove the Component from the DOM. This makes re-render faster but screws
     // up the zoom handler. So we need to re-init by setting zoomInitialized to
     // false
-    if (get(tree, "_id") !== get(prevTree, "_id")) {
+    if (get(tree.value, "_id") !== get(prevTree, "_id")) {
       setZoomInitialized(false);
     }
-    if (tree && tree.data) {
-      updateTreeState(tree.data, setNodes, setLinks);
+    if (tree.value && tree.value.data) {
+      updateTreeState(tree.value.data, setNodes, setLinks);
     }
-  }, [tree]);
+  }, [tree.value]);
 
   useEffect(() => {
     if (svg.current && !zoomInitialized) {
@@ -67,7 +68,6 @@ export const Tree = ({ onChange, onEditNode, readonly, tree }) => {
   }
 
   function zoomed(event) {
-    console.log(event);
     const zoomTransform = event.transform;
     zoom.current.setAttribute(
       "transform",
@@ -100,7 +100,7 @@ export const Tree = ({ onChange, onEditNode, readonly, tree }) => {
     setNodePeopleToHighlight(peopleIds);
   }
 
-  const treeId = get(tree, "_id", "");
+  const treeId = get(tree.value, "_id", "");
 
   return (
     <div
@@ -121,7 +121,7 @@ export const Tree = ({ onChange, onEditNode, readonly, tree }) => {
           parentType={parentType}
           parents={parents}
           personId={personDetails._id}
-          readonly={readonly}
+          readonly={false}
           traits={personDetails.traits}
           treeId={treeId}
         />
@@ -147,14 +147,12 @@ export const Tree = ({ onChange, onEditNode, readonly, tree }) => {
 
               return (
                 <Node
-                  addNode={(node) => addNode(tree, node, onChange)}
-                  editNode={onEditNode}
+                  addNode={addNode}
                   highlightParents={highlightParents}
                   highlightPeople={highlightPeople}
                   key={index}
                   nodeData={nodeData}
                   people={people}
-                  readonly={readonly}
                   showPersonDetails={showPersonDetails}
                 />
               );

@@ -1,16 +1,22 @@
+import { updateNode } from "@/api/tree";
+import { nodeToEdit, tree } from "@/state";
 import { Button, Group, MultiSelect, Radio } from "@mantine/core";
 import get from "lodash.get";
 import { useState } from "react";
 
-export const Parents = ({ close, node, onSave, people }) => {
+export const Parents = ({ close }) => {
+  const people = tree.value.people;
+
   const [conception, setConception] = useState(
-    get(node, "data.parentType", "NONE")
+    get(nodeToEdit.value, "data.parentType", "NONE")
   );
   const [parents, setParents] = useState(
-    get(node, "data.parents", []).map((person) => person._id)
+    get(nodeToEdit.value, "data.parents", []).map((person) => person._id)
   );
   const [adoptiveParents, setAdoptiveParents] = useState(
-    get(node, "data.adoptiveParents", []).map((person) => person._id)
+    get(nodeToEdit.value, "data.adoptiveParents", []).map(
+      (person) => person._id
+    )
   );
 
   function handleSaveNodeParents() {
@@ -24,7 +30,7 @@ export const Parents = ({ close, node, onSave, people }) => {
       ),
     };
 
-    onSave(newNodeData);
+    updateNode(newNodeData);
     close();
   }
 

@@ -1,4 +1,6 @@
-export const addNode = (tree, node, onChange) => {
+import { tree } from "@/state";
+
+export const addNode = (node) => {
   const newNode = { partners: [] };
 
   // create a record of the child indexes in the tree to get to the node we
@@ -14,7 +16,7 @@ export const addNode = (tree, node, onChange) => {
   }
 
   // Use the child indexes to add the new node to the tree
-  const newTree = JSON.parse(JSON.stringify(tree)); // deep clone of the tree
+  const newTree = JSON.parse(JSON.stringify(tree.value)); // deep clone of the tree
   let currentNode = newTree.data;
   for (let i = 0; i < childIndexes.length; i++) {
     const index = childIndexes[i];
@@ -25,5 +27,5 @@ export const addNode = (tree, node, onChange) => {
     ? [...currentNode.children, newNode]
     : [newNode];
 
-  onChange(newTree);
+  tree.value = newTree;
 };

@@ -1,3 +1,4 @@
+import { nodeToEdit, preview } from "@/state";
 import get from "lodash.get";
 
 import {
@@ -13,12 +14,10 @@ import { Person } from "./person";
 
 export const Node = ({
   addNode,
-  editNode,
   highlightParents,
   highlightPeople,
   nodeData,
   people,
-  readonly,
   showPersonDetails,
 }) => {
   function doHighlightParents() {
@@ -84,7 +83,7 @@ export const Node = ({
 
   return (
     <g className="node" transform={`translate(${nodeX},${nodeY})`}>
-      {!readonly && (
+      {!preview.value && (
         <rect
           className="fill-none stroke-white stroke-2"
           height={NODE_HEIGHT}
@@ -120,7 +119,7 @@ export const Node = ({
         );
       })}
 
-      {!readonly && (
+      {!preview.value && (
         <circle
           className="cursor-pointer add-node"
           cx={partners.length ? NODE_HEIGHT : NODE_HEIGHT / 2}
@@ -131,12 +130,12 @@ export const Node = ({
         />
       )}
 
-      {!readonly && (
+      {!preview.value && (
         <circle
           className="cursor-pointer edit-node"
           cy={NODE_HEIGHT / 2}
           fill={`url(#${EDIT_BUTTON_PATTERN})`}
-          onClick={() => editNode(nodeData)}
+          onClick={() => (nodeToEdit.value = nodeData)}
           r={NODE_BUTTON_RADIUS}
         />
       )}

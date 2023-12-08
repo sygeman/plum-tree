@@ -1,11 +1,17 @@
+import { updateNode } from "@/api/tree";
+import { nodeToEdit, tree } from "@/state";
 import { Button } from "@mantine/core";
 import get from "lodash.get";
 import { useState } from "react";
 
 import { PartnerRow } from "./partner-row";
 
-export const Partners = ({ close, node, onSave, people }) => {
-  const [partners, setPartners] = useState(get(node, "data.partners", []));
+export const Partners = ({ close }) => {
+  const [partners, setPartners] = useState(
+    get(nodeToEdit.value, "data.partners", [])
+  );
+
+  const people = tree.value.people;
 
   function handleAddPartner() {
     setPartners(partners.concat([{ people: [], type: "PARTNER" }]));
@@ -32,7 +38,7 @@ export const Partners = ({ close, node, onSave, people }) => {
   }
 
   function handleSaveNodePartners() {
-    onSave({ partners });
+    updateNode({ partners });
     close();
   }
 

@@ -1,16 +1,18 @@
+import { preview, tree } from "@/state";
 import { Switch } from "@mantine/core";
-import { EyeOpenIcon } from "@radix-ui/react-icons";
+import { EyeOpenIcon, Pencil1Icon } from "@radix-ui/react-icons";
 
-export const Toolbar = ({ readonly, setReadonly, tree }) => {
-  return (
-    <div className="items-center absolute space-x-2 flex top-2 left-2 backdrop-blur bg-black/30 px-4 py-2 rounded-lg text-white">
-      <div>{tree?.title}</div>
-      {/* <Switch
-        defaultChecked={readonly}
-        offLabel={<EyeOpenIcon />}
-        onChange={(event) => setReadonly(event.currentTarget.checked)}
-        onLabel={<Pencil1Icon />}
-      /> */}
-    </div>
-  );
-};
+export const Toolbar = () => (
+  <div
+    className={`items-center absolute space-x-2 flex top-2 left-2 backdrop-blur 
+    px-4 py-2 rounded-lg text-white bg-black/30`}
+  >
+    <div>{tree.value.title}</div>
+    <Switch
+      defaultChecked={preview.value}
+      offLabel={<Pencil1Icon />}
+      onChange={(event) => (preview.value = event.currentTarget.checked)}
+      onLabel={<EyeOpenIcon />}
+    />
+  </div>
+);
