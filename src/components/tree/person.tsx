@@ -10,17 +10,16 @@ import {
 } from "./constants";
 import { PersonLinks } from "./person-links";
 
-export const Person = (props) => {
-  const {
-    highlightParents,
-    mute,
-    nodeData,
-    personData,
-    small,
-    transform,
-    unhighlightParents,
-  } = props;
-
+export const Person = ({
+  highlightParents,
+  mute,
+  nodeData,
+  personData,
+  showPersonDetails,
+  small,
+  transform,
+  unhighlightParents,
+}) => {
   function handleMouseOver() {
     highlightParents && highlightParents();
   }
@@ -90,7 +89,7 @@ export const Person = (props) => {
         cy={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}
         fill={`url(#${fillId})`}
         onClick={() =>
-          props.showPersonDetails(
+          showPersonDetails(
             personData._id,
             parentType,
             parents,

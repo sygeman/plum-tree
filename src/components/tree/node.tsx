@@ -1,4 +1,4 @@
-import { nodeToEdit, preview } from "@/state";
+import { nodeToEdit, preview, tree } from "@/state";
 import get from "lodash.get";
 
 import {
@@ -17,9 +17,30 @@ export const Node = ({
   highlightParents,
   highlightPeople,
   nodeData,
-  people,
-  showPersonDetails,
 }) => {
+  const people = tree.value.people;
+
+  const showPersonDetails = () => null;
+  // function showPersonDetails(
+  //   personId,
+  //   parentType = "NONE",
+  //   parentIds = [],
+  //   adoptiveParentIds = []
+  // ) {
+  //   const personDetails = people.find((p) => p._id === personId);
+  //   const parents = parentIds.map((parentId) =>
+  //     people.find((person) => person._id === parentId)
+  //   );
+  //   const adoptiveParents = adoptiveParentIds.map((parentId) =>
+  //     people.find((person) => person._id === parentId)
+  //   );
+
+  //   setPersonDetails(personDetails);
+  //   setParentType(parentType);
+  //   setParents(parents);
+  //   setAdoptiveParents(adoptiveParents);
+  // }
+
   function doHighlightParents() {
     const nodeParentIds = get(nodeData, "data.parents", []).map(
       (parent) => parent._id

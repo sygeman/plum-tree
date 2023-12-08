@@ -1,24 +1,23 @@
+import { tree } from "@/state";
+import get from "lodash.get";
 import { useState } from "react";
 
-import defaultAvatar from "/default-avatar.png";
+// adoptiveParents = [],
+// aspirations = [],
+// avatar,
+// bio,
+// closeDetails,
+// custom = [],
+// firstName,
+// lastName,
+// lifeStates = [],
+// parentType = "NONE",
+// parents = [],
+// personId,
+// traits = [],
 
-export const PersonDetails = ({
-  adoptiveParents = [],
-  aspirations = [],
-  avatar,
-  bio,
-  closeDetails,
-  custom = [],
-  firstName,
-  lastName,
-  lifeStates = [],
-  parentType = "NONE",
-  parents = [],
-  personId,
-  readonly,
-  traits = [],
-  treeId,
-}) => {
+export const PersonDetails = () => {
+  const treeId = get(tree.value, "_id", "");
   const [linkDataVisible, setLinkDataVisible] = useState(false);
 
   function handleToggleLinkData() {
@@ -35,11 +34,7 @@ export const PersonDetails = ({
           <span>Edit</span>
         </Link>
       )} */}
-      <div
-        className={"styles.closeButton"}
-        id="close-person-details"
-        onClick={() => closeDetails()}
-      >
+      <div id="close-person-details" onClick={() => closeDetails()}>
         <span>Close</span>
       </div>
       <div className="text-center">
@@ -55,39 +50,11 @@ export const PersonDetails = ({
             Biological Parents <ParentType type={parentType} />
           </h3>
           <div>
-            {parents.map((parent, index) => {
-              const backgroundImage = parent.avatar
-                ? `url(${parent.avatar})`
-                : `url(${defaultAvatar})`;
-              return (
-                // .parentRow {
-                //   display: flex;
-                //   margin-bottom: 10px;
-                //   justify-content: flex-start;
-                //   align-items: center;
-                // }
-                <div className={"styles.parentRow"} key={index}>
-                  <div
-                    // .parentAvatar {
-                    //   width: 40px;
-                    //   height: 40px;
-                    //   border-radius: 50%;
-                    //   border: $color-white solid 4px;
-                    //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
-                    //   display: block;
-                    //   margin-right: 10px;
-                    //   background-position: center center;
-                    //   background-size: cover;
-                    // }
-                    className={"styles.parentAvatar"}
-                    style={{ backgroundImage }}
-                  />
-                  <span className="person-details-biological-parent-name">
-                    {parent.firstName} {parent.lastName}
-                  </span>
-                </div>
-              );
-            })}
+            {parents.map((parent, index) => (
+              <div key={index}>
+                {parent.firstName} {parent.lastName}
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -96,39 +63,11 @@ export const PersonDetails = ({
         <div>
           <h3>Adoptive Parents</h3>
           <div>
-            {adoptiveParents.map((parent, index) => {
-              const backgroundImage = parent.avatar
-                ? `url(${parent.avatar})`
-                : `url(${defaultAvatar})`;
-              return (
-                // .parentRow {
-                //   display: flex;
-                //   margin-bottom: 10px;
-                //   justify-content: flex-start;
-                //   align-items: center;
-                // }
-                <div className={"styles.parentRow"} key={index}>
-                  <div
-                    // .parentAvatar {
-                    //   width: 40px;
-                    //   height: 40px;
-                    //   border-radius: 50%;
-                    //   border: $color-white solid 4px;
-                    //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
-                    //   display: block;
-                    //   margin-right: 10px;
-                    //   background-position: center center;
-                    //   background-size: cover;
-                    // }
-                    className={"styles.parentAvatar"}
-                    style={{ backgroundImage }}
-                  />
-                  <span>
-                    {parent.firstName} {parent.lastName}
-                  </span>
-                </div>
-              );
-            })}
+            {adoptiveParents.map((parent, index) => (
+              <div key={index}>
+                {parent.firstName} {parent.lastName}
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -137,24 +76,9 @@ export const PersonDetails = ({
         <div>
           <h3>Traits</h3>
           <div>
-            {traits.map((trait, index) => {
-              return (
-                // .tag {
-                //   background: $blue1;
-                //   color: $color-white;
-                //   padding: 3px 10px;
-                //   margin-right: 7px;
-                //   margin-bottom: 10px;
-                //   border-radius: $default-border-radius;
-                //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
-                //   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-                //   display: inline-block;
-                // }
-                <span className={"styles.tag"} key={index}>
-                  {trait}
-                </span>
-              );
-            })}
+            {traits.map((trait, index) => (
+              <span key={index}>{trait}</span>
+            ))}
           </div>
         </div>
       )}
@@ -163,24 +87,9 @@ export const PersonDetails = ({
         <div>
           <h3>Aspirations</h3>
           <div>
-            {aspirations.map((aspiration, index) => {
-              return (
-                // .tag {
-                //   background: $blue1;
-                //   color: $color-white;
-                //   padding: 3px 10px;
-                //   margin-right: 7px;
-                //   margin-bottom: 10px;
-                //   border-radius: $default-border-radius;
-                //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
-                //   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-                //   display: inline-block;
-                // }
-                <span className={"styles.tag"} key={index}>
-                  {aspiration}
-                </span>
-              );
-            })}
+            {aspirations.map((aspiration, index) => (
+              <span key={index}>{aspiration}</span>
+            ))}
           </div>
         </div>
       )}
@@ -188,25 +97,9 @@ export const PersonDetails = ({
       {lifeStates.length > 0 && (
         <div>
           <h3>Life States</h3>
-
-          {lifeStates.map((lifeState, index) => {
-            return (
-              // .tag {
-              //   background: $blue1;
-              //   color: $color-white;
-              //   padding: 3px 10px;
-              //   margin-right: 7px;
-              //   margin-bottom: 10px;
-              //   border-radius: $default-border-radius;
-              //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
-              //   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-              //   display: inline-block;
-              // }
-              <span className={"styles.tag"} key={index}>
-                {lifeState}
-              </span>
-            );
-          })}
+          {lifeStates.map((lifeState, index) => (
+            <span key={index}>{lifeState}</span>
+          ))}
         </div>
       )}
 
@@ -229,24 +122,11 @@ export const PersonDetails = ({
         </div>
       )}
 
-      <div
-        // .linkDetailsToggle {
-        //   font-size: smaller;
-        //   color: $blue1;
-        //   text-decoration: underline;
-        //   cursor: pointer;
-        //   display: inline;
-        // }
-        className={"styles.linkDetailsToggle"}
-        onClick={handleToggleLinkData}
-      >
+      <div onClick={handleToggleLinkData}>
         {linkDataVisible ? "Hide Link Details" : "Show Link Details"}
       </div>
       {linkDataVisible && (
-        // .linkDetails {
-        //   font-size: smaller;
-        // }
-        <div className={"styles.linkDetails"}>
+        <div>
           <div>
             Tree Id <code>{treeId}</code>
           </div>
