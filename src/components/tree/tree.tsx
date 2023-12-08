@@ -52,10 +52,7 @@ export const Tree = () => {
   }
 
   return (
-    <div
-      className="absolute inset-0 overflow-hidden bg-cover"
-      style={{ backgroundImage: `url("/green-poly.jpg"` }}
-    >
+    <div className="absolute inset-0 overflow-hidden bg-gradient-to-r from-teal-500 from-30% to-teal-700 to-90%">
       <svg height="100%" ref={svg} width="100%">
         <CommonPatterns />
 

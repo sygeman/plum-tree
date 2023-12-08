@@ -1,8 +1,6 @@
 import get from "lodash.get";
 import { useEffect, useState } from "react";
 
-import defaultAvatar from "/default-avatar.png";
-
 export const TreePeople = () => {
   const treeId = "";
   const [people, setPeople] = useState([]);
@@ -141,14 +139,6 @@ export const TreePeople = () => {
         const personEditLink = `/trees/${treeId}/people/${person._id}`;
         const personLinkLink = `/trees/${treeId}/people/${person._id}/link`;
 
-        let backgroundImage;
-        if (person.avatar) {
-          backgroundImage = `url(${person.avatar})`;
-        } else {
-          backgroundImage = `url(${defaultAvatar})`;
-        }
-
-        const inlineAvatarStyle = { backgroundImage };
         let name;
         if (person.firstName || person.lastName) {
           name = `${person.firstName} ${person.lastName}`;
@@ -161,7 +151,6 @@ export const TreePeople = () => {
             className={`${"styles.personTile"} people-list-item`}
             key={person._id}
           >
-            <div className={"styles.avatar"} style={inlineAvatarStyle} />
             <div>{name}</div>
             <div className={"styles.personMenu"}>
               {/* <Link

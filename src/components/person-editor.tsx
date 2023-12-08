@@ -3,8 +3,6 @@ import { lifeStateOptions } from "@/utils/life-states";
 import { traitOptions } from "@/utils/traits";
 import { useState } from "react";
 
-import defaultAvatar from "/default-avatar.png";
-
 export const PersonEditor = () => {
   const treeId = "";
   const personId = "";
@@ -86,15 +84,6 @@ export const PersonEditor = () => {
     });
 
     setCustom(newCustom);
-  }
-
-  let imagePreview;
-  if (avatar) {
-    const style = { backgroundImage: `url(${avatarUri})` };
-    imagePreview = <div className={"styles.personAvatarImage"} style={style} />;
-  } else {
-    const style = { backgroundImage: `url(${defaultAvatar})` };
-    imagePreview = <div className={"styles.personAvatarImage"} style={style} />;
   }
 
   return (
