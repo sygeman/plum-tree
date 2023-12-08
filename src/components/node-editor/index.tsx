@@ -6,7 +6,9 @@ import { Parents } from "./parents";
 import { Partners } from "./partners";
 import { Person } from "./person";
 
-export const NodeEditor = ({ close, node, onChange, people = [], tree }) => {
+export const NodeEditor = ({ close, node, onChange, tree }) => {
+  const people = tree.people;
+
   const [currentView, setCurrentView] = useState(null);
   const [editingNode, setEditingNode] = useState(node);
 

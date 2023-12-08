@@ -16,7 +16,6 @@ export const PersonDetails = ({
   parents = [],
   personId,
   readonly,
-  style,
   traits = [],
   treeId,
 }) => {
@@ -26,46 +25,8 @@ export const PersonDetails = ({
     setLinkDataVisible(!linkDataVisible);
   }
 
-  const inlineAvatarStyle = {};
-  // if (avatar) {
-  //   inlineAvatarStyle.backgroundImage = `url(${(
-  //     avatar
-  //
-  //   )})`;
-  // } else {
-  //   inlineAvatarStyle.backgroundImage = `url(${defaultAvatar})`;
-  // }
-
   return (
-    //     .editButton,
-    // .closeButton {
-    //   position: absolute;
-    //   text-decoration: none;
-    //   color: $font-color;
-    //   top: 15px;
-    //   background: #f4f7f6;
-    //   padding: 5px 15px;
-    //   cursor: pointer;
-    //   line-height: 30px;
-    //   border-radius: 5px;
-    //   transition: background 0.3s ease-in-out;
-
-    //   &:hover {
-    //     background: #eee;
-
-    //     .close {
-    //       opacity: 1;
-    //     }
-    //   }
-    // }
-
-    // .closeButton {
-    //   right: 15px;
-    // }
-    <div
-      className="absolute z-100 bottom-0 right-0 w-[300px] m-4 p-4 bg-[#f4f7f6] overflow-auto"
-      style={style}
-    >
+    <div className="absolute z-100 top-0 right-0 w-[300px] m-4 p-4 bg-[#f4f7f6] overflow-auto">
       {/* {!readonly && (
         <Link
           className={"styles.editButton"}
@@ -82,21 +43,6 @@ export const PersonDetails = ({
         <span>Close</span>
       </div>
       <div className="text-center">
-        <div
-          // .personDetailsAvatar {
-          //   width: 70px;
-          //   height: 70px;
-          //   border-radius: 50%;
-          //   border: $color-white solid 4px;
-          //   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.075);
-          //   display: block;
-          //   margin: 0px auto;
-          //   background-position: center center;
-          //   background-size: cover;
-          // }
-          className={"styles.personDetailsAvatar"}
-          style={inlineAvatarStyle}
-        />
         <h2 id="person-details-name">
           {firstName} {lastName}
         </h2>
