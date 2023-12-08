@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 
 import { CommonPatterns } from "./common-patterns";
 import { TREE_TOP_PADDING } from "./constants";
-import { addNode } from "./helpers/add-node";
 import { updateTreeState } from "./helpers/update-tree-state";
 import { Link } from "./link";
 import { Node } from "./node";
@@ -73,7 +72,6 @@ export const Tree = () => {
 
               return (
                 <Node
-                  addNode={addNode}
                   highlightParents={highlightParents}
                   highlightPeople={highlightPeople}
                   key={index}

@@ -1,3 +1,4 @@
+import { addNode } from "@/api/tree";
 import { nodeToEdit, preview, tree } from "@/state";
 import get from "lodash.get";
 
@@ -12,12 +13,7 @@ import {
 import { Partner } from "./partner";
 import { Person } from "./person";
 
-export const Node = ({
-  addNode,
-  highlightParents,
-  highlightPeople,
-  nodeData,
-}) => {
+export const Node = ({ highlightParents, highlightPeople, nodeData }) => {
   const people = tree.value.people;
 
   const showPersonDetails = () => null;
