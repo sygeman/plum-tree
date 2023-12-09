@@ -10,17 +10,6 @@ import { useState } from "react";
 export const PersonLinks = ({ links, small }) => {
   const [linksOpen, setLinksOpen] = useState(false);
 
-  function handleToggleLinks() {
-    setLinksOpen(!linksOpen);
-  }
-
-  function goToTree(treeId, personId) {
-    // navigate({
-    //   pathname: `/public/${treeId}`,
-    //   search: `?p=${personId}`,
-    // });
-  }
-
   // icon position
   const offset = small ? NODE_SMALL_AVATAR_RADIUS : NODE_AVATAR_RADIUS;
   const centered =
@@ -32,13 +21,13 @@ export const PersonLinks = ({ links, small }) => {
   const listY = centered - offset - NODE_BUTTON_RADIUS - linkListHeight - 10;
 
   return (
-    <g className="person-link">
+    <g>
       <circle
         className="cursor-pointer person-links"
         cx={centered + offset}
         cy={centered - offset}
         fill={`url(#${LINK_BUTTON_PATTERN})`}
-        onClick={handleToggleLinks}
+        onClick={() => setLinksOpen(!linksOpen)}
         r={NODE_BUTTON_RADIUS}
       />
 
@@ -52,22 +41,19 @@ export const PersonLinks = ({ links, small }) => {
             width="198"
           />
 
-          {links.map((linkData, index) => {
-            const { personId, treeId } = linkData;
-            return (
-              <g
-                className="fill-[#f4f7f6] cursor-pointer hover:fill-white person-link"
-                key={index}
-                onClick={() => goToTree(treeId, personId)}
-                transform={`translate(0,${48 * index})`}
-              >
-                <rect height="48" rx="3" ry="3" width="198" />
-                <text className="cursor-pointer" transform="translate(10,30)">
-                  {linkData.title}
-                </text>
-              </g>
-            );
-          })}
+          {links.map((linkData, index) => (
+            <g
+              className="fill-[#f4f7f6] cursor-pointer hover:fill-white person-link"
+              key={index}
+              // onClick={() => goToTree(linkData.treeId, linkData.personId)}
+              transform={`translate(0,${48 * index})`}
+            >
+              <rect height="48" rx="3" ry="3" width="198" />
+              <text className="cursor-pointer" transform="translate(10,30)">
+                {linkData.title}
+              </text>
+            </g>
+          ))}
         </g>
       )}
     </g>
