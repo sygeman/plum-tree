@@ -2,7 +2,7 @@ import { useSVGZoom } from "@/utils/use-svg-zoom";
 
 import { BackgroundDots } from "./background-dots";
 import { CommonPatterns } from "./common-patterns";
-import { Links } from "./links/links";
+import { Links } from "./links";
 import { Nodes } from "./nodes/nodes";
 
 export const Tree = () => {
