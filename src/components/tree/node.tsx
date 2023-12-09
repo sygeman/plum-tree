@@ -13,7 +13,7 @@ import {
 import { Partner } from "./partner";
 import { Person } from "./person";
 
-export const Node = ({ highlightParents, highlightPeople, nodeData }) => {
+export const Node = ({ nodeData }) => {
   const people = tree.value.people;
 
   const showPersonDetails = () => null;
@@ -36,22 +36,6 @@ export const Node = ({ highlightParents, highlightPeople, nodeData }) => {
   //   setParents(parents);
   //   setAdoptiveParents(adoptiveParents);
   // }
-
-  function doHighlightParents() {
-    const nodeParentIds = get(nodeData, "data.parents", []).map(
-      (parent) => parent._id
-    );
-
-    if (get(nodeData, "parent") && highlightParents) {
-      highlightParents(nodeData.parent, nodeParentIds);
-    }
-  }
-
-  function doUnhighlightParents() {
-    if (get(nodeData, "parent") && highlightParents) {
-      highlightParents(nodeData.parent, []);
-    }
-  }
 
   function nodePosition(node) {
     let left = NODE_HEIGHT / 2;
@@ -90,14 +74,6 @@ export const Node = ({ highlightParents, highlightPeople, nodeData }) => {
   );
   const partners = nodeData.data.partners;
 
-  // check if we need to mute/darken the node person.
-  const personId = get(personData, "_id");
-  const mute =
-    personId &&
-    highlightPeople &&
-    highlightPeople.length &&
-    !highlightPeople.includes(personId);
-
   return (
     <g className="node" transform={`translate(${nodeX},${nodeY})`}>
       {!preview.value && (
@@ -112,12 +88,9 @@ export const Node = ({ highlightParents, highlightPeople, nodeData }) => {
       )}
 
       <Person
-        highlightParents={doHighlightParents}
-        mute={mute}
         nodeData={nodeData}
         personData={personData}
         showPersonDetails={showPersonDetails}
-        unhighlightParents={doUnhighlightParents}
       />
 
       {partners.map((partnerData, index, partners) => {
@@ -125,7 +98,6 @@ export const Node = ({ highlightParents, highlightPeople, nodeData }) => {
 
         return (
           <Partner
-            highlightPeople={highlightPeople}
             key={index}
             partnerData={partnerData}
             partners={partners}

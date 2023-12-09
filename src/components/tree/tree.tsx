@@ -12,8 +12,6 @@ import { Node } from "./node";
 export const Tree = () => {
   const [links, setLinks] = useState([]);
   const [nodes, setNodes] = useState([]);
-  const [nodeToHighlight, setNodeToHighlight] = useState(null);
-  const [nodePeopleToHighlight, setNodePeopleToHighlight] = useState([]);
 
   const svg = useRef(null);
   const zoom = useRef(null);
@@ -45,14 +43,16 @@ export const Tree = () => {
     );
   }
 
-  function highlightParents(node, peopleIds) {
-    setNodeToHighlight(node);
-    setNodePeopleToHighlight(peopleIds);
-  }
-
   return (
-    <div className="absolute inset-0 overflow-hidden bg-gradient-to-r from-teal-500 from-30% to-teal-700 to-90%">
-      <svg height="100%" ref={svg} width="100%">
+    <div
+      className={`absolute inset-0 overflow-hidden 
+      bg-gradient-to-r from-teal-500 from-30% to-teal-700 to-90%`}
+    >
+      <div
+        className={`pattern-dots pattern-blue-500 pattern-bg-white pattern-size-2 pattern-opacity-20 
+        absolute inset-0 w-full h-full`}
+      />
+      <svg className="absolute  " height="100%" ref={svg} width="100%">
         <CommonPatterns />
 
         <g ref={zoom}>
@@ -60,25 +60,9 @@ export const Tree = () => {
             {links.map((linkData, index) => (
               <Link key={index} linkData={linkData} />
             ))}
-
-            {nodes.map((nodeData, index) => {
-              // if the node we are rendering is the one where we need to
-              // highlight some people (parents) then pass the array of
-              // nodePeopleToHighlight otherwise default to an empty array.
-              let highlightPeople = [];
-              if (nodeData === nodeToHighlight) {
-                highlightPeople = nodePeopleToHighlight;
-              }
-
-              return (
-                <Node
-                  highlightParents={highlightParents}
-                  highlightPeople={highlightPeople}
-                  key={index}
-                  nodeData={nodeData}
-                />
-              );
-            })}
+            {nodes.map((nodeData, index) => (
+              <Node key={index} nodeData={nodeData} />
+            ))}
           </g>
         </g>
       </svg>

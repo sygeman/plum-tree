@@ -11,23 +11,12 @@ import {
 import { PersonLinks } from "./person-links";
 
 export const Person = ({
-  highlightParents,
-  mute,
   nodeData,
   personData,
   showPersonDetails,
   small,
   transform,
-  unhighlightParents,
 }) => {
-  function handleMouseOver() {
-    highlightParents && highlightParents();
-  }
-
-  function handleMouseOut() {
-    unhighlightParents && unhighlightParents();
-  }
-
   const avatarRadius = small ? NODE_SMALL_AVATAR_RADIUS : NODE_AVATAR_RADIUS;
   let fillId = small ? DEFAULT_SMALL_AVATAR_PATTERN : DEFAULT_AVATAR_PATTERN;
   const personAvatar = get(personData, "avatar", false);
@@ -96,9 +85,6 @@ export const Person = ({
             adoptiveParents
           )
         }
-        onMouseOut={handleMouseOut}
-        onMouseOver={handleMouseOver}
-        opacity={mute ? "0.5" : "1"}
         r={avatarRadius}
       />
       {links}
