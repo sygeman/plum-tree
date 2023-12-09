@@ -6,11 +6,11 @@ import {
 import { nodeToEdit, preview } from "@/state";
 import { type HierarchyPointNode } from "d3-hierarchy";
 
-export const EditNodeButton = ({
-  nodeData,
-}: {
+type Props = {
   nodeData: HierarchyPointNode<unknown>;
-}) => {
+};
+
+export const EditNodeButton = ({ nodeData }: Props) => {
   if (preview.value) return;
 
   return (

@@ -7,11 +7,11 @@ import {
 import { preview } from "@/state";
 import { type HierarchyPointNode } from "d3-hierarchy";
 
-export const AddNodeButton = ({
-  nodeData,
-}: {
+type Props = {
   nodeData: HierarchyPointNode<unknown>;
-}) => {
+};
+
+export const AddNodeButton = ({ nodeData }: Props) => {
   if (preview.value) return;
   const partners = nodeData.data.partners;
 

@@ -9,11 +9,11 @@ import { NodeEditBorder } from "./node-edit-border";
 import { Partners } from "./partners";
 import { Person } from "./person";
 
-export const Node = ({
-  nodeData,
-}: {
+type Props = {
   nodeData: HierarchyPointNode<unknown>;
-}) => {
+};
+
+export const Node = ({ nodeData }: Props) => {
   const { x, y } = nodePosition(nodeData);
 
   const people = tree.value.people;

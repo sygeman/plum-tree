@@ -3,11 +3,11 @@ import { type HierarchyPointNode } from "d3-hierarchy";
 import { getPartnerPosition } from "./helpers/get-partner-position";
 import { Partner } from "./partner";
 
-export const Partners = ({
-  nodeData,
-}: {
+type Props = {
   nodeData: HierarchyPointNode<unknown>;
-}) => {
+};
+
+export const Partners = ({ nodeData }: Props) => {
   const partners = nodeData.data.partners;
 
   return (
