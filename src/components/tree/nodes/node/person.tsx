@@ -12,58 +12,52 @@ import { v4 } from "uuid";
 import { PersonLinks } from "./person-links";
 
 type Props = {
-  nodeData: HierarchyPointNode<unknown>;
-  personData: unknown;
+  id?: string;
   small?: boolean;
   transform?: string;
 };
 
-export const Person = ({
-  nodeData,
-  personData,
-  small = false,
-  transform = "",
-}: Props) => {
+export const Person = ({ id, small = false, transform = "" }: Props) => {
   const avatarRadius = small ? NODE_SMALL_AVATAR_RADIUS : NODE_AVATAR_RADIUS;
-  let fillId = small ? DEFAULT_SMALL_AVATAR_PATTERN : DEFAULT_AVATAR_PATTERN;
-  const personAvatar = get(personData, "avatar", false);
+  const fillId = small ? DEFAULT_SMALL_AVATAR_PATTERN : DEFAULT_AVATAR_PATTERN;
+  // const personAvatar = get(personData, "avatar", false);
   let image, links;
 
-  if (!get(personData, "_id", false)) return;
+  // if (!get(personData, "_id", false)) return;
 
-  if (personAvatar) {
-    fillId = v4();
-    image = (
-      <image
-        aria-hidden="true"
-        className="avatar-image"
-        height={avatarRadius * 2}
-        preserveAspectRatio="xMidYMid slice"
-        width={avatarRadius * 2}
-        x="0"
-        // xlinkHref={personData.avatar}
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        y="0"
-      />
-    );
-  }
+  // if (personAvatar) {
+  //   fillId = v4();
+  //   image = (
+  //     <image
+  //       aria-hidden="true"
+  //       className="avatar-image"
+  //       height={avatarRadius * 2}
+  //       preserveAspectRatio="xMidYMid slice"
+  //       width={avatarRadius * 2}
+  //       x="0"
+  //       // xlinkHref={personData.avatar}
+  //       xmlnsXlink="http://www.w3.org/1999/xlink"
+  //       y="0"
+  //     />
+  //   );
+  // }
 
-  if (get(personData, "links.length")) {
-    links = <PersonLinks links={personData.links} small={small} />;
-  }
+  // if (get(personData, "links.length")) {
+  //   links = <PersonLinks links={personData.links} small={small} />;
+  // }
 
   // extra node data for person details pane (main node person only)
-  const parentType = get(nodeData, "data.parentType", "NONE");
-  const parents = get(nodeData, "data.parents", []).map((parent) =>
-    get(parent, "_id")
-  );
-  const adoptiveParents = get(nodeData, "data.adoptiveParents", []).map(
-    (parent) => get(parent, "_id")
-  );
+  // const parentType = get(nodeData, "data.parentType", "NONE");
+  // const parents = get(nodeData, "data.parents", []).map((parent) =>
+  //   get(parent, "_id")
+  // );
+  // const adoptiveParents = get(nodeData, "data.adoptiveParents", []).map(
+  //   (parent) => get(parent, "_id")
+  // );
 
   return (
     <g className="person" transform={transform}>
-      {personAvatar && (
+      {/* {personAvatar && (
         <defs>
           <pattern
             className="avatar-pattern"
@@ -76,7 +70,7 @@ export const Person = ({
             {image}
           </pattern>
         </defs>
-      )}
+      )} */}
       <circle
         className="stroke-white stroke-2 cursor-pointer"
         cx={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}

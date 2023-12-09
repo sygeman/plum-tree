@@ -1,4 +1,3 @@
-import { tree } from "@/state";
 import get from "lodash.get";
 
 import { PartnerType } from "./partner-type";
@@ -10,14 +9,11 @@ export const Partner = ({ partnerData, partners, transform }) => (
 
     {partnerData.people.map((person, index) => {
       const small = partners.length > 1 || index > 0;
-      const personData = tree.value.people.find(
-        (p) => p._id === get(person, "_id")
-      );
 
       return (
         <Person
+          id={get(person, "_id")}
           key={index}
-          personData={personData}
           small={small}
           transform={`translate(${index * 35},0)`}
         />

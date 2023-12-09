@@ -1,4 +1,3 @@
-import { tree } from "@/state";
 import { type HierarchyPointNode } from "d3-hierarchy";
 import get from "lodash.get";
 
@@ -16,15 +15,10 @@ type Props = {
 export const Node = ({ nodeData }: Props) => {
   const { x, y } = nodePosition(nodeData);
 
-  const people = tree.value.people;
-  const personData = people.find(
-    (p) => p._id === get(nodeData, "data.person._id")
-  );
-
   return (
-    <g className="node" transform={`translate(${x},${y})`}>
+    <g transform={`translate(${x},${y})`}>
       <NodeEditBorder nodeData={nodeData} />
-      <Person nodeData={nodeData} personData={personData} />
+      <Person id={get(nodeData, "data.person._id")} />
       <Partners nodeData={nodeData} />
       <AddNodeButton nodeData={nodeData} />
       <EditNodeButton nodeData={nodeData} />
