@@ -1,12 +1,11 @@
-import { useState } from "react";
-
 import {
   LINK_BUTTON_PATTERN,
   NODE_AVATAR_RADIUS,
   NODE_BUTTON_RADIUS,
   NODE_HEIGHT,
   NODE_SMALL_AVATAR_RADIUS,
-} from "./constants";
+} from "@/constants";
+import { useState } from "react";
 
 export const PersonLinks = ({ links, small }) => {
   const [linksOpen, setLinksOpen] = useState(false);

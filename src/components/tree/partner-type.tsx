@@ -6,7 +6,7 @@ import {
   PARTNER_ABDUCTION_BASE_Y,
   PARTNER_ABDUCTION_TOP_RADIUS,
   PARTNER_ABDUCTION_TOP_Y,
-} from "./constants";
+} from "@/constants";
 
 export const PartnerType = ({ type }) => {
   if (type === "PARTNER" || type === "EX_PARTNER") {

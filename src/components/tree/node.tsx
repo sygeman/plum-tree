@@ -1,7 +1,4 @@
 import { addNode } from "@/api/tree";
-import { nodeToEdit, preview, tree } from "@/state";
-import get from "lodash.get";
-
 import {
   EDIT_BUTTON_PATTERN,
   NODE_BUTTON_RADIUS,
@@ -9,7 +6,10 @@ import {
   NODE_SMALL_AVATAR_RADIUS,
   PARTNER_PADDING,
   PLUS_BUTTON_PATTERN,
-} from "./constants";
+} from "@/constants";
+import { nodeToEdit, preview, tree } from "@/state";
+import get from "lodash.get";
+
 import { Partner } from "./partner";
 import { Person } from "./person";
 

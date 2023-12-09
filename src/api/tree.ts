@@ -1,4 +1,6 @@
+import { TREE_DEPTH } from "@/constants";
 import { nodeToEdit, tree } from "@/state";
+import { tree as d3Tree, hierarchy } from "d3-hierarchy";
 
 export const addNode = (node) => {
   const newNode = { partners: [] };
@@ -86,4 +88,25 @@ export const deleteNode = () => {
 
   tree.value = newTree;
   nodeToEdit.value = null;
+};
+
+export const updateTreeState = (tree) => {
+  // setup tree data
+  const root = hierarchy(tree);
+
+  // declares a tree layout
+  const treeMap = d3Tree()
+    .nodeSize([200, 80])
+    .separation((a, b) => (a.parent === b.parent ? 1 : 1.2));
+  const treeData = treeMap(root);
+
+  // compute the tree layout nodes and links
+  const nodes = treeData.descendants();
+
+  // overwrite the height increase for each node depth/generation
+  nodes.forEach(function (d) {
+    d.y = d.depth * TREE_DEPTH;
+  });
+
+  return nodes;
 };

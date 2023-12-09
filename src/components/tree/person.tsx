@@ -1,13 +1,13 @@
-import get from "lodash.get";
-import { v4 } from "uuid";
-
 import {
   DEFAULT_AVATAR_PATTERN,
   DEFAULT_SMALL_AVATAR_PATTERN,
   NODE_AVATAR_RADIUS,
   NODE_HEIGHT,
   NODE_SMALL_AVATAR_RADIUS,
-} from "./constants";
+} from "@/constants";
+import get from "lodash.get";
+import { v4 } from "uuid";
+
 import { PersonLinks } from "./person-links";
 
 export const Person = ({

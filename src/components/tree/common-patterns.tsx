@@ -7,7 +7,7 @@ import {
   NODE_BUTTON_RADIUS,
   NODE_SMALL_AVATAR_RADIUS,
   PLUS_BUTTON_PATTERN,
-} from "./constants";
+} from "@/constants";
 
 import defaultAvatar from "/default-avatar.png";
 import editIcon from "/edit.png";

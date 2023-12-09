@@ -3,7 +3,7 @@ import {
   NODE_SMALL_AVATAR_RADIUS,
   PARTNER_PADDING,
   TREE_DEPTH,
-} from "./constants";
+} from "@/constants";
 
 export const Link = ({ linkData }) => {
   function drawPath() {
