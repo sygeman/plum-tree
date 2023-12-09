@@ -1,6 +1,6 @@
 import { treeNodes } from "@/state";
 
-import { Node } from "./node";
+import { Node } from "./node/node";
 
 export const Nodes = () => (
   <>

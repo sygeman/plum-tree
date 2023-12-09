@@ -5,26 +5,31 @@ import {
   NODE_HEIGHT,
   NODE_SMALL_AVATAR_RADIUS,
 } from "@/constants";
+import { HierarchyPointNode } from "d3-hierarchy";
 import get from "lodash.get";
 import { v4 } from "uuid";
 
 import { PersonLinks } from "./person-links";
 
+type Props = {
+  nodeData: HierarchyPointNode<unknown>;
+  personData: unknown;
+  small?: boolean;
+  transform?: string;
+};
+
 export const Person = ({
   nodeData,
   personData,
-  showPersonDetails,
-  small,
-  transform,
-}) => {
+  small = false,
+  transform = "",
+}: Props) => {
   const avatarRadius = small ? NODE_SMALL_AVATAR_RADIUS : NODE_AVATAR_RADIUS;
   let fillId = small ? DEFAULT_SMALL_AVATAR_PATTERN : DEFAULT_AVATAR_PATTERN;
   const personAvatar = get(personData, "avatar", false);
   let image, links;
 
-  if (!get(personData, "_id", false)) {
-    return null; // no person set
-  }
+  if (!get(personData, "_id", false)) return;
 
   if (personAvatar) {
     fillId = v4();
@@ -77,14 +82,14 @@ export const Person = ({
         cx={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}
         cy={avatarRadius + (NODE_HEIGHT - avatarRadius * 2) / 2}
         fill={`url(#${fillId})`}
-        onClick={() =>
-          showPersonDetails(
-            personData._id,
-            parentType,
-            parents,
-            adoptiveParents
-          )
-        }
+        // onClick={() =>
+        //   showPersonDetails(
+        //     personData._id,
+        //     parentType,
+        //     parents,
+        //     adoptiveParents
+        //   )
+        // }
         r={avatarRadius}
       />
       {links}
