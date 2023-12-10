@@ -1,9 +1,9 @@
 import { TREE_DEPTH } from "@/constants";
 import { nodeToEdit, tree } from "@/state";
-import { TreeNode } from "@/types";
+import { NodeData, TreeNode } from "@/types";
 import { tree as d3Tree, hierarchy } from "d3-hierarchy";
 
-export const addNode = (node) => {
+export const addNode = (node: NodeData) => {
   const newNode = { partners: [] };
 
   // create a record of the child indexes in the tree to get to the node we
@@ -33,7 +33,7 @@ export const addNode = (node) => {
   tree.value = newTree;
 };
 
-export const updateNode = (newNodeData) => {
+export const updateNode = (newNodeData: NodeData) => {
   // create a record of the child indexes in the tree to get to the node we
   // want delete
   let parentNode = nodeToEdit.value;
