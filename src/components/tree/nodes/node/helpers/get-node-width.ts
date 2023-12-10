@@ -1,5 +1,6 @@
 import { NODE_HEIGHT } from "@/constants";
+import { NodeData } from "@/types";
 
-export function getNodeWidth(node) {
-  return node.data.partners.length > 0 ? NODE_HEIGHT * 2 : NODE_HEIGHT;
+export function getNodeWidth(node: NodeData) {
+  return node.data.partners?.length ? NODE_HEIGHT * 2 : NODE_HEIGHT;
 }

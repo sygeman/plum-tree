@@ -1,3 +1,5 @@
+import { HierarchyPointNode } from "d3-hierarchy";
+
 export type People = {
   avatar: string;
   firstName: string;
@@ -12,12 +14,14 @@ export enum PartnerType {
   PARTNER = "PARTNER",
 }
 
+export type Partner = {
+  people: string[];
+  type: PartnerType;
+};
+
 export type TreeNode = {
   children?: TreeNode[];
-  partners?: {
-    people: string[];
-    type: PartnerType;
-  }[];
+  partners?: Partner[];
   person: string;
 };
 
@@ -27,3 +31,5 @@ export type Data = {
   title: string;
   tree: TreeNode;
 };
+
+export type NodeData = HierarchyPointNode<TreeNode>;

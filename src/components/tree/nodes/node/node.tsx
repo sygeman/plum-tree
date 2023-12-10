@@ -1,5 +1,4 @@
-import { type HierarchyPointNode } from "d3-hierarchy";
-import get from "lodash.get";
+import { NodeData } from "@/types";
 
 import { AddNodeButton } from "./add-node";
 import { EditNodeButton } from "./edit-node";
@@ -9,7 +8,7 @@ import { Partners } from "./partners";
 import { Person } from "./person";
 
 type Props = {
-  nodeData: HierarchyPointNode<unknown>;
+  nodeData: NodeData;
 };
 
 export const Node = ({ nodeData }: Props) => {
@@ -18,7 +17,7 @@ export const Node = ({ nodeData }: Props) => {
   return (
     <g transform={`translate(${x},${y})`}>
       <NodeEditBorder nodeData={nodeData} />
-      <Person id={get(nodeData, "data.person._id")} />
+      <Person id={nodeData.data.person} />
       <Partners nodeData={nodeData} />
       <AddNodeButton nodeData={nodeData} />
       <EditNodeButton nodeData={nodeData} />

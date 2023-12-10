@@ -11,22 +11,20 @@ export const Parents = ({ close }) => {
     get(nodeToEdit.value, "data.parentType", "NONE")
   );
   const [parents, setParents] = useState(
-    get(nodeToEdit.value, "data.parents", []).map((person) => person._id)
+    get(nodeToEdit.value, "data.parents", []).map((person) => person)
   );
   const [adoptiveParents, setAdoptiveParents] = useState(
-    get(nodeToEdit.value, "data.adoptiveParents", []).map(
-      (person) => person._id
-    )
+    get(nodeToEdit.value, "data.adoptiveParents", []).map((person) => person)
   );
 
   function handleSaveNodeParents() {
     const newNodeData = {
       adoptiveParents: adoptiveParents.map((parentId) =>
-        people.find((person) => person._id === parentId)
+        people.find((person) => person === parentId)
       ),
       parentType: conception,
       parents: parents.map((parentId) =>
-        people.find((person) => person._id === parentId)
+        people.find((person) => person === parentId)
       ),
     };
 
@@ -37,7 +35,7 @@ export const Parents = ({ close }) => {
   const peopleOptions = people.map((person) => {
     return {
       label: `${person.firstName} ${person.lastName}`,
-      value: person._id,
+      value: person.id,
     };
   });
 

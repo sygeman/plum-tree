@@ -1,11 +1,11 @@
 import { NODE_HEIGHT } from "@/constants";
 import { preview } from "@/state";
-import { type HierarchyPointNode } from "d3-hierarchy";
+import { NodeData } from "@/types";
 
 import { getNodeWidth } from "./helpers/get-node-width";
 
 type Props = {
-  nodeData: HierarchyPointNode<unknown>;
+  nodeData: NodeData;
 };
 
 export const NodeEditBorder = ({ nodeData }: Props) => {

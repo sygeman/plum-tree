@@ -1,14 +1,14 @@
-import { type HierarchyPointNode } from "d3-hierarchy";
+import { NodeData } from "@/types";
 
 import { getPartnerPosition } from "./helpers/get-partner-position";
 import { Partner } from "./partner";
 
 type Props = {
-  nodeData: HierarchyPointNode<unknown>;
+  nodeData: NodeData;
 };
 
 export const Partners = ({ nodeData }: Props) => {
-  const partners = nodeData.data.partners;
+  const partners = nodeData.data.partners || [];
 
   return (
     <>

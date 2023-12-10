@@ -7,8 +7,13 @@ import {
   PARTNER_ABDUCTION_TOP_RADIUS,
   PARTNER_ABDUCTION_TOP_Y,
 } from "@/constants";
+import { PartnerType as PartnerTypeT } from "@/types";
 
-export const PartnerType = ({ type }) => {
+type Props = {
+  type: PartnerTypeT;
+};
+
+export const PartnerType = ({ type }: Props) => {
   if (type === "PARTNER" || type === "EX_PARTNER") {
     let transform = "translate(-5,35)";
     if (type === "EX_PARTNER") {

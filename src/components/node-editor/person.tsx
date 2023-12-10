@@ -6,13 +6,13 @@ import { useState } from "react";
 
 export const Person = ({ close }) => {
   const people = tree.value.people;
-  const personId = get(nodeToEdit.value, "data.person._id");
+  const personId = get(nodeToEdit.value, "data.person.id");
   const [person, setPerson] = useState(
-    people.find((person) => person._id === personId)
+    people.find((person) => person.id === personId)
   );
 
   function selectPerson(personId) {
-    setPerson(people.find((person) => person._id === personId));
+    setPerson(people.find((person) => person.id === personId));
   }
 
   function handleSaveNodePerson() {
@@ -26,9 +26,9 @@ export const Person = ({ close }) => {
         className="mt-4"
         data={people.map((person) => ({
           label: `${person.firstName} ${person.lastName}`,
-          value: person._id,
+          value: person.id,
         }))}
-        defaultValue={person?._id}
+        defaultValue={person?.id}
         description="Select the primary person for this node."
         label="Node Person"
         onChange={(value) => selectPerson(value)}

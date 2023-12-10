@@ -4,9 +4,9 @@ import {
   PARTNER_PADDING,
   TREE_DEPTH,
 } from "@/constants";
-import { type HierarchyPointNode } from "d3-hierarchy";
+import { NodeData } from "@/types";
 
-export function drawPath(linkData: HierarchyPointNode<unknown>) {
+export function drawPath(linkData: NodeData) {
   let path = "M ";
   const startX = linkData.parent.x;
 
@@ -31,7 +31,7 @@ export function drawPath(linkData: HierarchyPointNode<unknown>) {
   path += " V " + (linkData.parent.y + (TREE_DEPTH - 30));
 
   // move to the target x position
-  if (linkData.data.partners.length === 0) {
+  if (linkData.data.partners?.length === 0) {
     // if the target has no partners center to the node
     path += " H " + linkData.x;
   } else {

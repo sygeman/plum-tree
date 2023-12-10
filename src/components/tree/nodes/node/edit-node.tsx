@@ -4,10 +4,10 @@ import {
   NODE_HEIGHT,
 } from "@/constants";
 import { nodeToEdit, preview } from "@/state";
-import { type HierarchyPointNode } from "d3-hierarchy";
+import { NodeData } from "@/types";
 
 type Props = {
-  nodeData: HierarchyPointNode<unknown>;
+  nodeData: NodeData;
 };
 
 export const EditNodeButton = ({ nodeData }: Props) => {

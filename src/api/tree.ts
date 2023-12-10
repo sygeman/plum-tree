@@ -1,5 +1,6 @@
 import { TREE_DEPTH } from "@/constants";
 import { nodeToEdit, tree } from "@/state";
+import { TreeNode } from "@/types";
 import { tree as d3Tree, hierarchy } from "d3-hierarchy";
 
 export const addNode = (node) => {
@@ -90,12 +91,12 @@ export const deleteNode = () => {
   nodeToEdit.value = null;
 };
 
-export const updateTreeState = (tree) => {
+export const updateTreeState = (tree: TreeNode) => {
   // setup tree data
   const root = hierarchy(tree);
 
   // declares a tree layout
-  const treeMap = d3Tree()
+  const treeMap = d3Tree<TreeNode>()
     .nodeSize([200, 80])
     .separation((a, b) => (a.parent === b.parent ? 1 : 1.2));
   const treeData = treeMap(root);

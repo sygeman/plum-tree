@@ -5,10 +5,10 @@ import {
   PLUS_BUTTON_PATTERN,
 } from "@/constants";
 import { preview } from "@/state";
-import { type HierarchyPointNode } from "d3-hierarchy";
+import { NodeData } from "@/types";
 
 type Props = {
-  nodeData: HierarchyPointNode<unknown>;
+  nodeData: NodeData;
 };
 
 export const AddNodeButton = ({ nodeData }: Props) => {
@@ -18,7 +18,7 @@ export const AddNodeButton = ({ nodeData }: Props) => {
   return (
     <circle
       className="cursor-pointer add-node"
-      cx={partners.length ? NODE_HEIGHT : NODE_HEIGHT / 2}
+      cx={partners?.length ? NODE_HEIGHT : NODE_HEIGHT / 2}
       cy={NODE_HEIGHT}
       fill={`url(#${PLUS_BUTTON_PATTERN})`}
       onClick={() => addNode(nodeData)}

@@ -1,9 +1,10 @@
 import { NODE_HEIGHT } from "@/constants";
+import { NodeData } from "@/types";
 
-export function nodePosition(node) {
+export function nodePosition(node: NodeData) {
   let left = NODE_HEIGHT / 2;
 
-  if (node.data.partners.length > 0) {
+  if (node.data.partners?.length) {
     left = NODE_HEIGHT;
   }
 
