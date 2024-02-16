@@ -9,7 +9,7 @@ export const Tree = () => {
   const { svgRef, zoomRef } = useSVGZoom();
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden size-full">
       <BackgroundDots />
 
       <svg className="absolute h-full w-full" ref={svgRef}>
