@@ -1,45 +1,34 @@
 import Dagre from "@dagrejs/dagre";
 import { Edge, Node } from "reactflow";
 
+import { flatData } from "./flat-data";
 import { Data, PartnerType, TreeNode } from "./types";
 
 export const prepareData = (data: Data) => {
-  const initialNodes = data.people.map(
-    ({ avatar, firstName, id, lastName }) => ({
-      data: { avatar, firstName, id, lastName },
-      id,
-      position: { x: 0, y: 0 },
-      type: "person",
-    })
-  );
+  const people = flatData(data);
 
   const initialEdges: Edge<{ type?: PartnerType }>[] = [];
 
-  const getEdgesFromTree = (tree: TreeNode) => {
-    if (tree.partners) {
-      tree.partners.forEach((partner) => {
-        partner.people.map((people) => {
-          initialEdges.push({
-            data: {
-              type: partner.type,
-            },
-            id: `${tree.person}-${people}`,
-            source: tree.person,
-            target: people,
-          });
-        });
-      });
-    }
+  const initialNodes = Array.from(people, ([, p]) => p)
+    .filter(({ childen, parents }) => childen.size + parents.size)
+    .map((data) => ({
+      data,
+      id: data.id,
+      position: { x: 0, y: 0 },
+      type: "person",
+    }));
 
+  const getEdgesFromTree = (tree: TreeNode) => {
     if (tree.children) {
       tree.children.forEach((children) => {
         initialEdges.push({
-          animated: true,
+          // animated: true,
           data: {},
           id: `${tree.person}-${children.person}`,
           source: tree.person,
           target: children.person,
         });
+
         getEdgesFromTree(children);
       });
     }

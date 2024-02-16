@@ -1,4 +1,4 @@
-import ReactFlow, { Controls } from "reactflow";
+import ReactFlow, { Background, ConnectionLineType, Controls } from "reactflow";
 
 import dataJson from "./data.json";
 import { PersonNode } from "./person";
@@ -13,7 +13,20 @@ const { edges, nodes } = prepareData(data);
 export const App = () => {
   return (
     <div className="insert-0 h-full w-full absolute">
-      <ReactFlow edges={edges} fitView nodeTypes={nodeTypes} nodes={nodes}>
+      <ReactFlow
+        connectionLineType={ConnectionLineType.SmoothStep}
+        connectionRadius={0}
+        edges={edges}
+        edgesFocusable={false}
+        elementsSelectable={false}
+        fitView
+        nodeTypes={nodeTypes}
+        nodes={nodes}
+        nodesConnectable={false}
+        nodesDraggable={false}
+        nodesFocusable={false}
+      >
+        <Background className="bg-gradient-to-r from-stone-500 to-stone-700" />
         <Controls className="bg-white" showInteractive={false} />
       </ReactFlow>
     </div>

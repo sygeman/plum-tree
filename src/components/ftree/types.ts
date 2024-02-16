@@ -27,3 +27,9 @@ export type Data = {
   title: string;
   tree: TreeNode;
 };
+
+export type PeopleExtended = People & {
+  childen: Set<{ id: string }>;
+  parents: Set<{ id: string }>;
+  partners: Set<{ id: string; partner: PeopleExtended; type: string }>;
+};
